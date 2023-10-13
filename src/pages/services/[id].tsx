@@ -5,6 +5,7 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import { IProjects, IServices } from "@/types/global";
 import { GetStaticPaths, GetStaticProps } from "next";
+import Link from "next/link";
 
 interface IProps {
   service: IServices;
@@ -16,6 +17,13 @@ const SingleService = ({ service, projects }: IProps) => {
     <div>
       {" "}
       <h2>{service?.title}</h2>
+      <div>
+        <h2>relevant projects</h2>
+        {projects.map((project, i) => (
+          <div key={i}>{project.name}</div>
+        ))}
+        <Link href="/projects">See All Projects</Link>
+      </div>
     </div>
   );
 };

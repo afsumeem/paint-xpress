@@ -16,6 +16,7 @@ const HomeServices = ({ services }: IProps) => {
           <Link href={`/services/${service._id}`}>see details</Link>
         </div>
       ))}
+      <Link href="/services">See all services</Link>
     </div>
   );
 };
