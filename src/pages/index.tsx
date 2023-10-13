@@ -2,9 +2,10 @@ import RootLayout from "@/components/Layouts/RootLayout";
 import AboutUs from "@/components/UI/AboutUs";
 import ChooseUs from "@/components/UI/ChooseUs";
 import HeroSection from "@/components/UI/HeroSection";
+import HomeServices from "@/components/UI/HomeServices";
 import LatestProjects from "@/components/UI/LatestProjects";
 import PaintCategories from "@/components/UI/PaintCategories";
-import { ICategory, IProjects } from "@/types/global";
+import { ICategory, IProjects, IServices } from "@/types/global";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 
@@ -13,9 +14,10 @@ import Head from "next/head";
 interface IProps {
   categories: ICategory[];
   projects: IProjects[];
+  services: IServices[];
 }
 
-export default function HomePage({ categories, projects }: IProps) {
+export default function HomePage({ categories, projects, services }: IProps) {
   return (
     <>
       <Head>
@@ -28,6 +30,7 @@ export default function HomePage({ categories, projects }: IProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HeroSection />
+      <HomeServices services={services} />
       <AboutUs />
       <PaintCategories categories={categories} />
       <LatestProjects projects={projects} />
@@ -42,6 +45,11 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
 
 //fetch paints categories
 export const getStaticProps: GetStaticProps<IProps> = async () => {
+  //fetch services
+  const result = await fetch("http://localhost:5000/services");
+  const services = await result.json();
+  const randomServices = services.slice(0, 8);
+
   //fetch categories
   const res = await fetch("http://localhost:5000/categories");
   const categories = await res.json();
@@ -52,8 +60,9 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
 
   return {
     props: {
-      categories,
-      projects,
+      categories: categories,
+      projects: projects,
+      services: randomServices,
     },
     revalidate: 5,
   };
