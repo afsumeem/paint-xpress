@@ -57,11 +57,12 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
   //fetch latest projects
   const response = await fetch("http://localhost:5000/projects");
   const projects = await response.json();
+  const randomProjects = projects.slice(0, 8);
 
   return {
     props: {
       categories: categories,
-      projects: projects,
+      projects: randomProjects,
       services: randomServices,
     },
     revalidate: 5,
