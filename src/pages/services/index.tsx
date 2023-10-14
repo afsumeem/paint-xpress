@@ -2,6 +2,7 @@ import RootLayout from "@/components/Layouts/RootLayout";
 import { useGetServicesQuery } from "@/redux/features/services/serviceApi";
 import { IServices } from "@/types/global";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
 //
@@ -71,17 +72,20 @@ const ServicePage = ({ services, categories }: IProps) => {
           ) : (
             <>
               {data?.map((service: IServices, i: number) => (
-                <div key={i}>
-                  <h2>{service.title}</h2>
-                  <Image
-                    src={service.image}
-                    alt="services image"
-                    width={300}
-                    height={300}
-                  />
+                <>
+                  <div key={i}>
+                    <h2>{service.title}</h2>
+                    <Image
+                      src={service.image}
+                      alt="services image"
+                      width={300}
+                      height={300}
+                    />
 
-                  <p>{service.description}</p>
-                </div>
+                    <p>{service.description}</p>
+                  </div>
+                  <Link href={`/services/${service._id}`}>See details</Link>
+                </>
               ))}
             </>
           )}

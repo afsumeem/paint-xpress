@@ -1,9 +1,10 @@
 import React from "react";
 import type { MenuProps } from "antd";
-import { Menu } from "antd";
+import { Badge, Menu } from "antd";
 import Link from "next/link";
-import { BarsOutlined } from "@ant-design/icons";
+import { BarsOutlined, BookOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
+import BookingList from "../UI/BookingList";
 
 //
 
@@ -77,6 +78,7 @@ const Navbar: React.FC = () => {
   return (
     <div className="flex items-center justify-between w-full text-lg">
       <Link href="/">PaintXpress</Link>
+      <BookingList />
 
       <div className="flex">
         <Menu

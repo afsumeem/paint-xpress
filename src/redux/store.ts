@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-
 import { api } from "./api/apiSlice";
+import bookingListReducer from "./features/services/serviceSlice";
 
 const store = configureStore({
   // reducer
 
   reducer: {
-    // project: projectReducer,
+    bookingList: bookingListReducer,
 
     [api.reducerPath]: api.reducer,
   },

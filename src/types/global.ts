@@ -30,4 +30,5 @@ export interface IServices {
   description: string;
   reviews: IReviews;
   category: string;
+  isBooked?: boolean;
 }
