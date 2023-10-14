@@ -20,7 +20,12 @@ const BookingList: React.FC = () => {
   return (
     <>
       <Badge count={services.length} size="small">
-        <BookOutlined shape="square" sizes="large" onClick={showDrawer} />
+        <BookOutlined
+          shape="square"
+          sizes="large"
+          onClick={showDrawer}
+          className="text-blue-900 text-2xl "
+        />
       </Badge>
 
       <Drawer
