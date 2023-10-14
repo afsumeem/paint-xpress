@@ -2,16 +2,23 @@ import { GoogleOutlined, GithubOutlined } from "@ant-design/icons";
 import Head from "next/head";
 import styles from "@/styles/Login.module.css";
 import { signIn } from "next-auth/react";
-import { useForm } from "react-hook-form";
-// import auth from "@/firebase/firebase.auth";
-// import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useForm, SubmitHandler } from "react-hook-form";
+import auth from "@/firebase/firebase.auth";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useRouter } from "next/router";
+
+//
+
+interface IFormInput {
+  email: string;
+  password: string;
+}
 
 const LoginPage = () => {
   //
-
-  // const [createUserWithEmailAndPassword, user, loading, error] =
-  //   useCreateUserWithEmailAndPassword(auth);
-  // console.log(user);
+  const router = useRouter();
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
 
   //
 
@@ -19,15 +26,18 @@ const LoginPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<IFormInput>();
 
-  const onSubmit = (data: any) => {
-    // createUserWithEmailAndPassword(data.email, data.password);
-    console.log(data);
+  const onSubmit: SubmitHandler<IFormInput> = (data: any) => {
+    signInWithEmailAndPassword(data.email, data.password);
+
+    router.push("/");
   };
 
   //
-
+  if (loading) {
+    return <p>Loading...</p>;
+  }
   //
 
   return (
@@ -53,15 +63,32 @@ const LoginPage = () => {
         <hr />
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="">Your Email</label>
-          <input type="email" {...register("email", { required: true })} />
+          <input
+            placeholder="Your Email"
+            className="text-black"
+            type="email"
+            {...register("email", { required: true })}
+          />
           <label htmlFor="">Your Password</label>
           <input
+            placeholder="Your Password"
+            className="text-black"
             type="password"
             {...register("password", { required: true })}
           />
           <button type="submit">Login</button>
         </form>
       </div>
+      {error && (
+        <div>
+          <p>Error: {error?.message}</p>
+        </div>
+      )}
+      {user && (
+        <div>
+          <p>Signed In User: {user.user.email}</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,16 +1,21 @@
 import React from "react";
-import type { MenuProps } from "antd";
-import { Button, Divider, Menu } from "antd";
+import { Button, Menu } from "antd";
 import Link from "next/link";
 import { BarsOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import BookingList from "../UI/BookingList";
 import { useSession, signOut } from "next-auth/react";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+import auth from "@/firebase/firebase.auth";
+// import auth from "@/firebase/firebase.auth";
 
 //
 
 const Navbar: React.FC = () => {
+  const [signOut, loading, error] = useSignOut(auth);
   const { data: session } = useSession();
+
+  const [user] = useAuthState(auth);
 
   // const [current, setCurrent] = useState("mail");
 
@@ -18,7 +23,9 @@ const Navbar: React.FC = () => {
   //   console.log("click ", e);
   //   setCurrent(e.key);
   // };
-
+  if (loading) {
+    return <p>Loading...</p>;
+  }
   return (
     <div className="flex items-center justify-between w-full text-lg">
       <Link href="/">PaintXpress</Link>
@@ -49,10 +56,25 @@ const Navbar: React.FC = () => {
             Contact
           </Link>
 
-          {session?.user ? (
+          {session?.user || user?.email ? (
             <>
-              <Button onClick={() => signOut()}>LogOut</Button>
-              <h2>{session?.user?.name}</h2>
+              {session?.user && (
+                <Button onClick={() => signOut()}>LogOut</Button>
+              )}
+              {user?.email && (
+                <Button
+                  onClick={async () => {
+                    const success = await signOut();
+                    if (success) {
+                      alert("You are sign out");
+                    }
+                  }}
+                >
+                  Logout
+                </Button>
+              )}
+
+              <h2>{session?.user?.name || user?.email}</h2>
             </>
           ) : (
             <>
