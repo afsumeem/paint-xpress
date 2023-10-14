@@ -20,13 +20,24 @@ const serviceSlice = createSlice({
       const existing = state.services.find(
         (service) => service._id === action.payload._id
       );
+
       if (!existing) {
-        state.services.push({ ...action.payload, isBooked: true });
+        state.services.push(action.payload);
       }
+
+      //
+      // if (!existing) {
+      //   state.services.push({ ...action.payload, isBooked: true });
+      // }
+    },
+    removeFromBookingList: (state, action: PayloadAction<IServices>) => {
+      state.services = state.services.filter(
+        (service) => service._id !== action.payload._id
+      );
     },
   },
 });
 
-export const { addToBookingList } = serviceSlice.actions;
+export const { addToBookingList, removeFromBookingList } = serviceSlice.actions;
 
 export default serviceSlice.reducer;
