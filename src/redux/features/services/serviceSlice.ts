@@ -6,10 +6,12 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface IBookingList {
   services: IServices[];
+  total: number;
 }
 
 const initialState: IBookingList = {
   services: [],
+  total: 0,
 };
 
 const serviceSlice = createSlice({
@@ -24,6 +26,10 @@ const serviceSlice = createSlice({
       if (!existing) {
         state.services.push(action.payload);
       }
+
+      //
+
+      state.total += action.payload.price;
 
       //
       // if (!existing) {
