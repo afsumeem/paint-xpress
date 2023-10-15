@@ -67,10 +67,12 @@ const Navbar: React.FC = () => {
             <button
               className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 "
               style={{ backgroundColor: "skyblue" }}
+              onClick={() => signout()}
             >
               LogOut
             </button>
           )}
+
           {user?.email && (
             <button
               className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 "
@@ -84,6 +86,7 @@ const Navbar: React.FC = () => {
               Logout
             </button>
           )}
+
           {session?.user || user?.email ? (
             <>
               <h2>{session?.user?.name || user?.email}</h2>
@@ -91,19 +94,13 @@ const Navbar: React.FC = () => {
           ) : (
             <>
               <Link href="/login">
-                <button
-                  onClick={() => signout()}
-                  className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 "
-                >
+                <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 ">
                   Login
                 </button>
               </Link>
 
               <Link href="/signup">
-                <button
-                  className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 "
-                  onClick={() => signout()}
-                >
+                <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 ">
                   SignUp
                 </button>
               </Link>

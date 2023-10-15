@@ -28,7 +28,7 @@ export interface IServices {
   contact: string;
   rating: number;
   description: string;
-  reviews: IReviews;
+  reviews: IReviews[];
   category: string;
   isBooked?: boolean;
 }

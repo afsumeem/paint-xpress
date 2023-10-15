@@ -44,11 +44,14 @@ const AboutUs = () => {
               Bringing your dreams to life
             </h2>
 
-            <p className="mb-4 ">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit
-              aliquid consectetur enim totam omnis! Quaerat soluta dolores dolor
-              deleniti atque eligendi voluptatum vero! Quasi, dolorum. Quos quo
-              facilis incidunt architecto. Lorem, ipsum dolor sit amet
+            <p className="mb-8 ">
+              PaintXpress will provide top-quality interior and exterior
+              residential and commercial painting services. The principal
+              officers of Barnum Painters believe that most companies in this
+              industry suffer two major problems. These are poor scheduling of
+              job projects and poor retention of quality employees. Both lead to
+              lower customer satisfaction, lack of repeat business and a low
+              word-of-mouth referral rate.
             </p>
             <hr />
             <div className="mt-4 font-semibold">
