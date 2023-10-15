@@ -20,12 +20,20 @@
   top: 20px;
 
 } */
-/* .section-title::after{
-content: "";
-background-color: black;
-height: 10px;
-width: 20px;
-} */
+.project-cover-card{
+position: relative
+}
+.project-tag{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.project-duration{
+  position: absolute;
+  bottom: 20px;
+  
+
+}
 
 
 
