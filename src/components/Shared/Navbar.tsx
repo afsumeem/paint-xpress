@@ -33,82 +33,74 @@ const Navbar: React.FC = () => {
       </Link>
 
       <div className="flex items-center justify-center">
-        <Menu className="invisible lg:visible flex gap-2" mode="horizontal">
-          <Link href="/">
-            <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 ">
-              Home
-            </button>
-          </Link>
+        <div className="navigationLinks">
+          <Menu
+            overflowedIndicator={false}
+            className=" gap-2"
+            mode="horizontal"
+          >
+            <Link href="/">
+              <button className="navLink">Home</button>
+            </Link>
 
-          <Link href="/services">
-            <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 ">
-              Services
-            </button>
-          </Link>
+            <Link href="/services">
+              <button className="navLink">Services</button>
+            </Link>
 
-          <Link href="/projects">
-            <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-sky-400 text-lg hover:text-black py-2 ">
-              Projects
-            </button>
-          </Link>
+            <Link href="/projects">
+              <button className="navLink">Projects</button>
+            </Link>
 
-          <Link href="/team" target="_blank">
-            <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 ">
-              Our Team
-            </button>
-          </Link>
-          <Link href="/contact">
-            {" "}
-            <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 ">
-              Contact
-            </button>
-          </Link>
+            <Link href="/team" target="_blank">
+              <button className="navLink ">Our Team</button>
+            </Link>
+            <Link href="/contact">
+              {" "}
+              <button className="navLink ">Contact</button>
+            </Link>
 
-          {/*  */}
-          {session?.user && (
-            <button
-              className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 "
-              style={{ backgroundColor: "skyblue" }}
-              onClick={() => signout()}
-            >
-              LogOut
-            </button>
-          )}
+            {/*  */}
+            {session?.user && (
+              <button
+                className="navLink "
+                style={{ backgroundColor: "skyblue" }}
+                onClick={() => signout()}
+              >
+                LogOut
+              </button>
+            )}
 
-          {user?.email && (
-            <button
-              className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 "
-              onClick={async () => {
-                const success = await signOut();
-                if (success) {
-                  alert("You are sign out");
-                }
-              }}
-            >
-              Logout
-            </button>
-          )}
+            {user?.email && (
+              <button
+                className="navLink"
+                onClick={async () => {
+                  const success = await signOut();
+                  if (success) {
+                    alert("You are sign out");
+                  }
+                }}
+              >
+                Logout
+              </button>
+            )}
 
-          {session?.user || user?.email ? (
-            <>
-              <h2>{session?.user?.name || user?.email}</h2>
-            </>
-          ) : (
-            <>
-              <Link href="/login">
-                <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 ">
-                  Login
-                </button>
-              </Link>
+            {session?.user || user?.email ? (
+              <>
+                <h2>{session?.user?.name || user?.email}</h2>
+              </>
+            ) : (
+              <>
+                <Link href="/login">
+                  <button className="navLink ">Login</button>
+                </Link>
 
-              <Link href="/signup">
-                <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 ">
-                  SignUp
-                </button>
-              </Link>
-            </>
-          )}
-        </Menu>
+                <Link href="/signup">
+                  <button className="navLink">SignUp</button>
+                </Link>
+              </>
+            )}
+          </Menu>
+        </div>
 
         {/*  booking list icon*/}
 

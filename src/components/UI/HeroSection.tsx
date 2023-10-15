@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="banner">
+    <div className="banner overflow-hidden">
       <div className="bg-black">
         <Image
           src={img1}
