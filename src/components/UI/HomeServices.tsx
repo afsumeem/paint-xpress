@@ -117,8 +117,12 @@ const HomeServices = ({ services }: IProps) => {
           </Col>
           // </div>
         ))}
-        <Link href="/services">See all services</Link>
       </Row>
+      <Link href="/services ">
+        <button className="px-6 py-2 bg-sky-600 uppercase mt-6 text-white font-bold block m-auto mb-4">
+          See all services
+        </button>
+      </Link>
     </div>
   );
 };
