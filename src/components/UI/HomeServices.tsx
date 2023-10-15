@@ -3,7 +3,7 @@ import { addToBookingList } from "@/redux/features/services/serviceSlice";
 import { PhoneOutlined } from "@ant-design/icons";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { IServices } from "@/types/global";
-import { Button, Col, Row, message } from "antd";
+import { Col, Row, message } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -45,12 +45,12 @@ const HomeServices = ({ services }: IProps) => {
   }, []);
 
   return (
-    <div className=" py-20 px-10">
+    <div className=" pt-20 pb-10 px-10">
       <div className="mb-10 section-title">
         <h4 className="font-bold text-2xl text-sky-400 uppercase ">
           Our Services
         </h4>
-        <h2 className="text-4xl font-semibold uppercase">
+        <h2 className="text-4xl font-mono font-semibold uppercase">
           We Provide Superior Paint Service
         </h2>
       </div>

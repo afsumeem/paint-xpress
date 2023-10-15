@@ -11,9 +11,15 @@ interface IProps {
 
 const LatestProjects = ({ projects }: IProps) => {
   return (
-    <div>
-      <h5>What We Do</h5>
-      <h1>Latest Projects</h1>
+    <div className="mx-10">
+      <div className="mb-10 section-title">
+        <h4 className="font-bold text-2xl text-sky-400 uppercase ">
+          Latest Projects
+        </h4>
+        <h2 className="text-4xl font-semibold uppercase font-mono">
+          Inspiration on Your Next Project
+        </h2>
+      </div>
       {projects.map((project, i) => (
         <div key={i}>
           <h2>{project.name}</h2>
