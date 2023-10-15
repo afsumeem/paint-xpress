@@ -32,3 +32,13 @@ export interface IServices {
   category: string;
   isBooked?: boolean;
 }
+
+//
+
+export interface ICustomerReviews {
+  name: string;
+  designation: string;
+  comment: string;
+  rating: number;
+  img?: string;
+}

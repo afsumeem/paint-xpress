@@ -1,11 +1,17 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import AboutUs from "@/components/UI/AboutUs";
 import ChooseUs from "@/components/UI/ChooseUs";
+import CustomerReviews from "@/components/UI/CustomerReviews";
 import HeroSection from "@/components/UI/HeroSection";
 import HomeServices from "@/components/UI/HomeServices";
 import LatestProjects from "@/components/UI/LatestProjects";
 import PaintCategories from "@/components/UI/PaintCategories";
-import { ICategory, IProjects, IServices } from "@/types/global";
+import {
+  ICategory,
+  ICustomerReviews,
+  IProjects,
+  IServices,
+} from "@/types/global";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 
@@ -15,9 +21,15 @@ interface IProps {
   categories: ICategory[];
   projects: IProjects[];
   services: IServices[];
+  reviews: ICustomerReviews[];
 }
 
-export default function HomePage({ categories, projects, services }: IProps) {
+export default function HomePage({
+  categories,
+  projects,
+  services,
+  reviews,
+}: IProps) {
   return (
     <>
       <Head>
@@ -35,6 +47,8 @@ export default function HomePage({ categories, projects, services }: IProps) {
       <PaintCategories categories={categories} />
       <LatestProjects projects={projects} />
       <ChooseUs />
+
+      <CustomerReviews reviews={reviews} />
     </>
   );
 }
@@ -59,11 +73,17 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
   const projects = await response.json();
   const randomProjects = projects.slice(0, 6);
 
+  //customer reviews
+
+  const reviews = await fetch("http://localhost:5000/reviews");
+  const customerReviews = await reviews.json();
+
   return {
     props: {
       categories: categories,
       projects: randomProjects,
       services: randomServices,
+      reviews: customerReviews,
     },
     revalidate: 5,
   };

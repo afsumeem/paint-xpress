@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/jsx-key */
 import { ICategory } from "@/types/global";
-import Image from "next/image";
 
 import Slider from "react-slick";
 //
