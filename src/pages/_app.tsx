@@ -6,6 +6,7 @@ import { StyleProvider } from "@ant-design/cssinjs";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
 import { SessionProvider } from "next-auth/react";
+import "aos/dist/aos.css";
 
 type ComponentWithLayout = {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
