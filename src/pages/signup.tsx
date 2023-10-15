@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "@/firebase/firebase.auth";
 import { message } from "antd";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 //
 interface IFormInput {
@@ -46,35 +47,59 @@ const SignUpPage = () => {
         <title>SignUp</title>
       </Head>
       <div className={styles.form}>
-        <h3>LOGIN</h3>
+        <h3 className="text-center font-bold my-4 text-xl">
+          Create Your Account
+        </h3>
 
         <hr />
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="">Your Email</label>
+          <label htmlFor="" className="text-left">
+            Your Email
+          </label>
           <input
             type="email"
-            className="text-black"
+            className="text-black mb-4"
             placeholder="email"
             {...register("email", { required: true })}
           />
-          <label htmlFor="">Your Password</label>
+          <label htmlFor="" className="text-left">
+            Your Password
+          </label>
           <input
-            className="text-black"
+            className="text-black mb-4"
             placeholder="password"
             type="password"
             {...register("password", { required: true })}
           />
-          <button type="submit">Signup</button>
+          <button
+            type="submit"
+            className="bg-black text-white block mx-auto p-2 rounded"
+          >
+            Sign Up
+          </button>
         </form>
+        <Link href="/login">
+          <h4 className="text-center mt-4">
+            Already have an account?{" "}
+            <span className="underline text-blue-800">Login</span>
+          </h4>
+        </Link>
+
+        <h4 className="text-center text-xl font-mono mt-10">
+          Back to{" "}
+          <Link href="/">
+            <span className="underline text-blue-800">home</span>
+          </Link>
+        </h4>
       </div>
       {error && (
-        <div>
+        <div className="text-center">
           <p>Error: {error.message}</p>
         </div>
       )}
       {user && (
         <div>
-          <p>Registered User: {user.user.email}</p>
+          <p className="text-center">Registered User: {user.user.email}</p>
         </div>
       )}
     </div>
