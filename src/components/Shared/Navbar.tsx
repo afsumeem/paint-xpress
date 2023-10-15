@@ -39,17 +39,19 @@ const Navbar: React.FC = () => {
               Home
             </button>
           </Link>
-          <Link href="/about">
-            <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-sky-400 text-lg hover:text-black py-2 ">
-              About
-            </button>
-          </Link>
 
           <Link href="/services">
             <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 ">
               Services
             </button>
           </Link>
+
+          <Link href="/projects">
+            <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-sky-400 text-lg hover:text-black py-2 ">
+              Projects
+            </button>
+          </Link>
+
           <Link href="/team" target="_blank">
             <button className="hover:bg-sky-300 transition rounded-md duration-1000 px-4 text-lg text-sky-400 hover:text-black py-2 ">
               Our Team
@@ -126,11 +128,6 @@ const Navbar: React.FC = () => {
                   Home
                 </button>
               </Link>
-              <Link href="/about">
-                <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
-                  About
-                </button>
-              </Link>
 
               <Link href="/services">
                 {" "}
@@ -138,6 +135,13 @@ const Navbar: React.FC = () => {
                   Services
                 </button>
               </Link>
+
+              <Link href="/projects">
+                <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
+                  Projects
+                </button>
+              </Link>
+
               <Link href="/team">
                 {" "}
                 <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">

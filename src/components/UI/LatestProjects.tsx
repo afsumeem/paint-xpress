@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { IProjects } from "@/types/global";
-import { Button, Col, Row } from "antd";
-import Image from "next/image";
+import { Col, Row } from "antd";
 import Link from "next/link";
 import AOS from "aos";
 import { useEffect } from "react";
