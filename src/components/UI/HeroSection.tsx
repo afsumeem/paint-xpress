@@ -1,55 +1,42 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { Button, Carousel } from "antd";
+import { Button } from "antd";
 import Image from "next/image";
 import img1 from "../../assests/images/about.jpg";
+import Link from "next/link";
 
-const contentStyle: React.CSSProperties = {
-  // height: "160px",
-  // color: "#fff",
-  // lineHeight: "160px",
-  // textAlign: "center",
-  // background: "black",
-  // minHeight: "100vh",
-};
-
-const HeroSection: React.FC = () => (
-  <div className="banner">
-    <Carousel autoplay style={{ background: "black" }}>
-      <div>
+const HeroSection: React.FC = () => {
+  return (
+    <div className="banner">
+      <div className="bg-black">
         <Image
           src={img1}
-          className="bannerImg"
+          // height={500}
+          // width={500}
+          className="bannerImg "
           alt="carousel img"
           style={{
-            background: "black",
+            backgroundColor: "black",
             width: "100%",
             height: "100vh",
             opacity: "0.4",
           }}
         />
-        <div className="banner-content">
-          <h5 className="text-2xl">Best in country</h5>
-          <h2 className="text-4xl">Cost effective commercial service</h2>
-          <p className="text-3xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-            alias necessitatibus? Dolore blanditiis adipisci minus tempora
-            corrupti accusantium veniam amet, error deserunt voluptatibus
-            consequuntur ipsam velit et tenetur laudantium! Sunt!
-          </p>
-          <Button>Booking Now</Button>
+        <div className="banner-content text-center">
+          <h5 className="text-2xl text-sky-100">Best in country</h5>
+          <h2 className="text-4xl uppercase font-bold my-8 text-white">
+            Bring Your Home To Lively colors. Cost effective commercial service
+          </h2>
+
+          <Link href="/services">
+            <button className="px-6 py-4 bg-sky-600 uppercase mt-6 text-white font-bold">
+              Booking Services
+            </button>
+          </Link>
         </div>
       </div>
-      <div>
-        <h3 style={contentStyle}>2</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>3</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>4</h3>
-      </div>
-    </Carousel>
-  </div>
-);
+    </div>
+  );
+};
 
 export default HeroSection;

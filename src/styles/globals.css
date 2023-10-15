@@ -5,21 +5,16 @@
 
 .banner{
     position: relative;
+   
 }
+
 .banner-content{
     position:absolute;
-    top: 300px;
-}
-/*  */
-/* .section-card{
-  position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.service-details{
- position: absolute;
-  top: 20px;
-
-} */
 .project-cover-card{
 position: relative
 }
@@ -72,7 +67,7 @@ position: relative
       -webkit-transform: scale(1, 1);
     }
     to {
-      -webkit-transform: scale(1.5, 1.5);
+      -webkit-transform: scale(1.2, 1.2);
     }
   }
   
@@ -81,11 +76,11 @@ position: relative
       transform: scale(1, 1);
     }
     to {
-      transform: scale(1.5, 1.5);
+      transform: scale(1.2, 1.2);
     }
   }
   
   .bannerImg {
-     -webkit-animation: zoom 15s; 
-     animation: zoom 15s; 
+     -webkit-animation: zoom 5s; 
+     animation: zoom 5s; 
   } 

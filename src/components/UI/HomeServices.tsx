@@ -76,7 +76,7 @@ const HomeServices = ({ services }: IProps) => {
                     alt="service img"
                     // height={500}
                     // width={500}
-                    className="w-full h-52 hover:opacity-70 transition hover:scale-125 duration-1000"
+                    className="w-full md:h-52 hover:opacity-70 transition hover:scale-125 duration-1000"
                   />
                 </Link>
               </div>
