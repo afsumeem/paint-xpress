@@ -44,7 +44,13 @@ const SignUpPage = () => {
   return (
     <div>
       <Head>
-        <title>SignUp</title>
+        <title>Create a New Account</title>
+        <meta
+          name="description"
+          content="A Paint Service website made by next-js"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.form}>
         <h3 className="text-center font-bold my-4 text-xl">

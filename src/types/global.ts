@@ -42,3 +42,19 @@ export interface ICustomerReviews {
   rating: number;
   img?: string;
 }
+
+//
+
+interface ISocial {
+  facebook: string;
+  twitter: string;
+  behance: string;
+  instagram: string;
+}
+
+export interface ITeams {
+  name: string;
+  designation: string;
+  image: string;
+  social_links: ISocial;
+}

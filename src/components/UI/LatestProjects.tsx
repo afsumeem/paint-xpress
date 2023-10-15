@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { IProjects } from "@/types/global";
-import { Col, Row } from "antd";
+import { Col, Modal, Row } from "antd";
 import Link from "next/link";
 import AOS from "aos";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 //
 interface IProps {
@@ -11,6 +11,20 @@ interface IProps {
 }
 
 const LatestProjects = ({ projects }: IProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -39,15 +53,20 @@ const LatestProjects = ({ projects }: IProps) => {
             className="section-card mb-10  gutter-row"
           >
             <div className="shadow-lg p-6">
-              <h2 className="uppercase font-bold mb-4">{project.name}</h2>
-              <div className="project-cover-card bg-black overflow-hidden hover:cursor-pointer">
-                <Link href="/projects ">
-                  <img
-                    className="w-full h-52 hover:opacity-50  opacity-70 transition hover:scale-125 duration-1000"
-                    src={project.image}
-                    alt="latest projects image"
-                  />
-                </Link>
+              <div className="project-cover-card bg-black overflow-hidden hover:cursor-pointer mb-4">
+                <img
+                  className="w-full h-52 opacity-70 transition project-cover-img hover:scale-125 duration-1000 project-img"
+                  src={project.image}
+                  alt="latest projects image"
+                />
+                {/* <div className="middle"> */}
+                <button
+                  onClick={showModal}
+                  className="view-project-btn p-2 bg-sky-400 transition duration-1000"
+                >
+                  View Project
+                </button>
+                {/* </div> */}
                 <div className="project-tag">
                   <p className="bg-sky-600 p-2 m-2 font-semibold text-white uppercase ">
                     {project.category}
@@ -58,22 +77,44 @@ const LatestProjects = ({ projects }: IProps) => {
                   {project.duration}
                 </h5>
               </div>
-
-              <p className="my-4 text-base">
-                {project.description.slice(0, 119)}
-              </p>
               <hr />
+              <h2 className="uppercase font-bold text-lg my-4">
+                {project.name}
+              </h2>
+            </div>
+            <Modal
+              title={project.name}
+              open={isModalOpen}
+              onOk={handleOk}
+              centered
+              onCancel={handleCancel}
+            >
+              <img
+                className="w-full h-60 transition duration-1000"
+                src={project.image}
+                alt="latest projects image"
+              />
+
+              <p className=" mt-2 uppercase underline">{project.category}</p>
+
+              <h5 className=" text-black uppercase pt-2 font-semibold">
+                Duration: {project.duration}
+              </h5>
+
+              <p className="my-4 text-base">{project.description}</p>
+
               <Row gutter={5}>
                 {project.tags.map((tag, i) => (
                   <Col key={i} className=" ">
-                    <h3 className="font-mono  underline mt-4">{tag} </h3>
+                    <h3 className="font-mono border px-2 mt-4">{tag} </h3>
                   </Col>
                 ))}
               </Row>
-            </div>
+            </Modal>
           </Col>
         ))}
       </Row>
+
       <Link href="/projects ">
         <button className="px-6 py-2 bg-sky-600 uppercase mt-6 text-white font-bold block m-auto mb-4">
           See all Projects

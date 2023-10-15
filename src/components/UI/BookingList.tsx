@@ -36,7 +36,9 @@ const BookingList: React.FC = () => {
         open={open}
       >
         {services.length === 0 ? (
-          <h2 className="text-red-500 text-xl">No service booked!!</h2>
+          <h2 className="text-red-500 text-xl">
+            Your cart is currently empty.
+          </h2>
         ) : (
           <>
             <div className="my-4">

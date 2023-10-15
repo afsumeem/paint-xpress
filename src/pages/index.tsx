@@ -1,5 +1,6 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import AboutUs from "@/components/UI/AboutUs";
+import BookingNowSection from "@/components/UI/BookingNowSection";
 import ChooseUs from "@/components/UI/ChooseUs";
 import CustomerReviews from "@/components/UI/CustomerReviews";
 import HeroSection from "@/components/UI/HeroSection";
@@ -41,19 +42,21 @@ export default function HomePage({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <HeroSection />
       <HomeServices services={services} />
       <AboutUs />
       <PaintCategories categories={categories} />
       <LatestProjects projects={projects} />
       <ChooseUs />
-
       <CustomerReviews reviews={reviews} />
+
       <ScrollToTop
         smooth
         style={{ backgroundColor: "blue", padding: "5px" }}
         color="white"
       />
+      {/* <BookingNowSection /> */}
     </>
   );
 }

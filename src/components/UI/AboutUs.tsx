@@ -2,6 +2,7 @@ import Image from "next/image";
 import aboutImg from "../../assests/images/about.jpg";
 import AOS from "aos";
 import { useEffect } from "react";
+import Link from "next/link";
 
 const AboutUs = () => {
   useEffect(() => {
@@ -34,7 +35,7 @@ const AboutUs = () => {
         <div
           data-aos="fade-left"
           data-aos-duration="1200"
-          className="min-h-96 w-full lg:w-1/2 border rounded-3xl lg:-ml-24 lg:mt-14 -mb-14 bg-white shadow-2xl"
+          className="min-h-96 w-full lg:w-1/2 border rounded-3xl lg:-ml-24 lg:mt-10 -mb-14 bg-white shadow-2xl"
         >
           <div className="p-10  ">
             <h4 className="text-sky-600 uppercase text-md font-bold">
@@ -58,9 +59,11 @@ const AboutUs = () => {
               <h5 className="">MON - FRI: 9 AM - 10 PM</h5>
               <h5>SATURDAY: 9 AM - 6 PM</h5>
             </div>
-            <button className="px-6 py-2 bg-sky-600 uppercase mt-6 text-white font-bold">
-              Our Services
-            </button>
+            <Link href="/services">
+              <button className="px-6 py-2 bg-sky-600 uppercase mt-6 text-white font-bold">
+                Booking Services
+              </button>
+            </Link>
           </div>
         </div>
       </div>

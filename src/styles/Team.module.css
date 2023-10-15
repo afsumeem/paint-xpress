@@ -1,0 +1,93 @@
+.teamCard{
+    /* margin: 20px; */
+    max-width: 300px;
+    text-align: center;
+    padding-left: 0;
+    border: 2px solid #edeef2;
+    transition: border 0.3s ease-in-out;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.coverBox{
+    height: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    background-color: #edeef2;
+    transition: background-color 0.3s ease-in ;
+}
+
+.teamCover{
+    background-color: #edeef2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgb(74, 100, 214);
+    border-radius: 100px;
+    height: 180px;
+    width: 180px;
+    transition: background-color 0.3s ease-in ;
+}
+
+.teamCover img{
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+}
+
+.teamDetails{
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.teamDetails h2{
+color: #333333;
+font-size: 20px;
+font-weight: bold;
+
+}
+
+.teamDetails h4{
+   color: #8d8c8c;
+   font-size: 18px;
+}
+.boxLine{
+    height: 1px;
+    border-radius: 2;
+    width: 150px;
+    background-color: rgb(235, 235, 235);
+    display: block;
+    margin: auto;
+    transition: background-color 0.3s  ease-in;
+
+}
+
+.teamIcon{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.teamCard:hover{
+    border:2px solid rgba(40,155,255,1) 
+}
+.teamCard:hover .teamCover{
+background-color: white;
+}
+
+.teamCard:hover .coverBox{
+background-color:  rgb(27, 146, 236) ;
+
+}
+
+.teamCard:hover .boxLine{
+    background-color: blue;
+
+}
