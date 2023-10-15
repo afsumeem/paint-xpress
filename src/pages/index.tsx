@@ -14,7 +14,7 @@ import {
 } from "@/types/global";
 import { GetStaticProps } from "next";
 import Head from "next/head";
-
+import ScrollToTop from "react-scroll-to-top";
 //
 
 interface IProps {
@@ -49,6 +49,11 @@ export default function HomePage({
       <ChooseUs />
 
       <CustomerReviews reviews={reviews} />
+      <ScrollToTop
+        smooth
+        style={{ backgroundColor: "blue", padding: "5px" }}
+        color="white"
+      />
     </>
   );
 }
