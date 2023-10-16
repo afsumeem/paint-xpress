@@ -1,12 +1,13 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import AboutUs from "@/components/UI/AboutUs";
-import BookingNowSection from "@/components/UI/BookingNowSection";
 import ChooseUs from "@/components/UI/ChooseUs";
 import CustomerReviews from "@/components/UI/CustomerReviews";
+import Feedback from "@/components/UI/Feedback";
 import HeroSection from "@/components/UI/HeroSection";
 import HomeServices from "@/components/UI/HomeServices";
 import LatestProjects from "@/components/UI/LatestProjects";
 import PaintCategories from "@/components/UI/PaintCategories";
+// import Feedback from "@/components/UI/feedback";
 import {
   ICategory,
   ICustomerReviews,
@@ -50,13 +51,12 @@ export default function HomePage({
       <LatestProjects projects={projects} />
       <ChooseUs />
       <CustomerReviews reviews={reviews} />
-
+      <Feedback />
       <ScrollToTop
         smooth
         style={{ backgroundColor: "blue", padding: "5px" }}
         color="white"
       />
-      {/* <BookingNowSection /> */}
     </>
   );
 }

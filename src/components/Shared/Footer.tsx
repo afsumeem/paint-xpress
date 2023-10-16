@@ -23,7 +23,7 @@ const Footer = () => {
   }
 
   return (
-    <div className="bg-sky-400 h-80 mt-20 p-10">
+    <div className="bg-sky-400 min-h-80 mt-20 p-10">
       <Row>
         <Col md={8} sm={24}>
           <div className="px-5 pt-4">

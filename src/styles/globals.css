@@ -78,14 +78,15 @@ position: relative
 }
 .project-cover-card:hover .view-project-btn{
   opacity: 1;
+  /* color:rgb(206, 205, 205) */
  }
 
  /*  */
 .parallax{
-  background-image: url("../assests//images//about.jpg");
+  background-image: url("../assests/images/about.jpg");
 
   /* Set a specific height */
-  min-height: 1600px;
+  min-height: 1000px;
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;

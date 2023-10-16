@@ -35,7 +35,7 @@ const AboutUs = () => {
         <div
           data-aos="fade-left"
           data-aos-duration="1200"
-          className="min-h-96 w-full lg:w-1/2 border rounded-3xl lg:-ml-24 lg:mt-10 -mb-14 bg-white shadow-2xl"
+          className="min-h-96 w-full lg:w-1/2 border rounded-3xl  lg:-ml-24 lg:mt-10 -mb-14 bg-white shadow-2xl"
         >
           <div className="p-10  ">
             <h4 className="text-sky-600 uppercase text-md font-bold">
