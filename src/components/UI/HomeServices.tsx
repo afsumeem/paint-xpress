@@ -40,6 +40,21 @@ const HomeServices = ({ services }: IProps) => {
 
   //
 
+  //pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 5;
+
+  const handlePageChange = (page: React.SetStateAction<number>) => {
+    setCurrentPage(page);
+  };
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = currentPage * pageSize;
+
+  const displayServices = services.slice(startIndex, endIndex);
+
+  //
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -55,7 +70,7 @@ const HomeServices = ({ services }: IProps) => {
         </h2>
       </div>
       <Row gutter={20}>
-        {services.map((service, i) => (
+        {displayServices.map((service, i) => (
           // <div key={i}>
           <Col
             data-aos="zoom-in-up"
@@ -117,7 +132,13 @@ const HomeServices = ({ services }: IProps) => {
           </Col>
           // </div>
         ))}
-        <Pagination defaultCurrent={6} total={500} />
+
+        <Pagination
+          current={currentPage}
+          total={services.length}
+          pageSize={pageSize}
+          onChange={handlePageChange}
+        />
       </Row>
       <Link href="/services ">
         <button className="px-6 py-2 bg-sky-600 uppercase mt-6 text-white font-bold block m-auto mb-4">

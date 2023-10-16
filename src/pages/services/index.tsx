@@ -1,14 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
+// /* eslint-disable @next/next/no-img-element */
 import RootLayout from "@/components/Layouts/RootLayout";
 import { useGetServicesQuery } from "@/redux/features/services/serviceApi";
 import { IServices } from "@/types/global";
-import { Breadcrumb, Col, Row, Spin, message } from "antd";
+import { Breadcrumb, Col, Pagination, Row, Spin, message } from "antd";
 import { PhoneOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { addToBookingList } from "@/redux/features/services/serviceSlice";
 import { HomeOutlined } from "@ant-design/icons";
+
 //
 
 interface IProps {
@@ -17,24 +19,48 @@ interface IProps {
 }
 
 const ServicePage = ({ services, categories }: IProps) => {
-  //search and filter functionality for books
+  //search and filter functionality for services
 
   const [selectCategory, setSelectCategory] = useState("");
   const [searchText, setSearchText] = useState("");
 
-  const { data, isLoading } = useGetServicesQuery({
+  // const { data, isLoading } = useGetServicesQuery({
+  //   search: searchText,
+  //   category: selectCategory,
+  // });
+
+  const dispatch = useAppDispatch();
+
+  ////////////////////
+  const [data, setData] = useState([]);
+  const { data: fetchedData, isLoading } = useGetServicesQuery({
     search: searchText,
     category: selectCategory,
   });
 
-  const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (!isLoading && fetchedData) {
+      setData(fetchedData);
+    }
+  }, [fetchedData, isLoading]);
+
+  ///////////////
+  //pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 5;
+
+  const handlePageChange = (page: any) => {
+    setCurrentPage(page);
+  };
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = currentPage * pageSize;
+
+  const displayServices = data?.slice(startIndex, endIndex);
+
+  //
 
   const [buttonClicked, setButtonClicked] = useState(false);
-
-  // const handleAddToBookingList = (service: IServices) => {
-  //   dispatch(addToBookingList(service));
-  //   message.success("Service booked");
-  // };
 
   const selectedService = useAppSelector((state) => state.bookingList.services);
 
@@ -132,7 +158,7 @@ const ServicePage = ({ services, categories }: IProps) => {
                 <Spin size="large" />
               ) : (
                 <Row gutter={20}>
-                  {data?.map((service: IServices, i: number) => (
+                  {displayServices?.map((service: IServices, i: number) => (
                     <Col
                       key={i}
                       span={6}
@@ -197,46 +223,16 @@ const ServicePage = ({ services, categories }: IProps) => {
                   ))}
                 </Row>
               )}
+              <Pagination
+                current={currentPage}
+                total={data.length}
+                pageSize={pageSize}
+                onChange={handlePageChange}
+              />
             </>
           )}
         </Col>
       </Row>
-
-      {/* <form className="join mx-auto w-2/3">
-        <input
-          type="text"
-          onChange={(e) => setSearchText(e.target.value)}
-          className="input input-bordered join-item w-full md:w-2/3 md:mx-auto"
-          placeholder="Search here"
-        />
-      </form> */}
-
-      {/*  */}
-      {/* <button
-        onClick={() => {
-          setSelectCategory("");
-        }}
-        className="btn w-full rounded-none text-blue-950 hover:text-white  bg-slate-400 hover:bg-blue-950 transition duration-1000"
-      >
-        Reset category
-      </button> */}
-      {/* {categories?.map((category, i) => (
-        <li key={i}>
-          <input
-            onChange={() => setSelectCategory(category)}
-            className="h-3 w-3"
-            id={category}
-            type="radio"
-            name="category"
-            checked={selectCategory === category}
-          />
-          <label className="text-[14px] ml-4" htmlFor={category}>
-            {category}
-          </label>
-        </li>
-      ))} */}
-
-      {/*  */}
     </div>
   );
 };
