@@ -3,12 +3,11 @@ import {
   HistoryOutlined,
   BookOutlined,
   EditOutlined,
-  NotificationOutlined,
   UserOutlined,
   InteractionOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme } from "antd";
 import Link from "next/link";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -41,10 +40,11 @@ const items: MenuItem[] = [
     "5",
     <BookOutlined />
   ),
-  getItem("Quick Actions", "7", <InteractionOutlined />),
-  getItem("Edit Profile", "3", <EditOutlined />),
-  getItem("User's Activities", "4", <UserOutlined />),
-  getItem("Notifications Center", "6", <NotificationOutlined />),
+  getItem("Quick Actions", "7", <InteractionOutlined />, [
+    getItem(<Link href="/#feedback">Feedback us</Link>, "9"),
+    getItem(<Link href="/services">Service</Link>, "10"),
+  ]),
+  getItem(<Link href="editprofile">Edit Profile</Link>, "3", <EditOutlined />),
 ];
 
 const DashboardLayout = ({ children }: any) => {
