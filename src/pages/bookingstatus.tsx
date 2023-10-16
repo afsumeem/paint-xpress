@@ -3,10 +3,10 @@ import DashboardLayout from "@/components/Layouts/Dashboard";
 import RootLayout from "@/components/Layouts/RootLayout";
 import { removeFromBookingList } from "@/redux/features/services/serviceSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { Space, Table, message } from "antd";
+import { Button, Space, Table, message } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
-const BookingHistoryPage = () => {
+const BookingStatusPage = () => {
   const { services } = useAppSelector((state) => state.bookingList);
   const dispatch = useAppDispatch();
 
@@ -45,17 +45,11 @@ const BookingHistoryPage = () => {
       key: "rating",
     },
     {
-      title: "Action",
-      key: "action",
+      title: "Status",
+      key: "status",
       render: (_, record) => (
         <Space size="middle">
-          <button onClick={() => handleDeleteItem(record)}>
-            <a
-              style={{ color: "red", border: "1px solid red", padding: "4px" }}
-            >
-              Delete
-            </a>
-          </button>
+          <a style={{ color: "green" }}>Pending</a>
         </Space>
       ),
     },
@@ -77,9 +71,9 @@ const BookingHistoryPage = () => {
   );
 };
 
-export default BookingHistoryPage;
+export default BookingStatusPage;
 
-BookingHistoryPage.getLayout = function getLayout(page: React.ReactElement) {
+BookingStatusPage.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <RootLayout>
       <DashboardLayout>{page}</DashboardLayout>

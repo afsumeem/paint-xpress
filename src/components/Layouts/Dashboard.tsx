@@ -36,11 +36,15 @@ const items: MenuItem[] = [
     "2",
     <HistoryOutlined />
   ),
+  getItem(
+    <Link href="/bookingstatus">Booking Status</Link>,
+    "5",
+    <BookOutlined />
+  ),
+  getItem("Quick Actions", "7", <InteractionOutlined />),
   getItem("Edit Profile", "3", <EditOutlined />),
   getItem("User's Activities", "4", <UserOutlined />),
-  getItem("Booking Status", "5", <BookOutlined />),
   getItem("Notifications Center", "6", <NotificationOutlined />),
-  getItem("Quick Actions", "7", <InteractionOutlined />),
 ];
 
 const DashboardLayout = ({ children }: any) => {
