@@ -32,7 +32,7 @@ const LoginPage = () => {
   const onSubmit: SubmitHandler<IFormInput> = (data: any) => {
     signInWithEmailAndPassword(data.email, data.password);
 
-    router.push("/");
+    router.push("/profile");
   };
 
   //
@@ -67,8 +67,9 @@ const LoginPage = () => {
           </label>
           <input
             placeholder="Your Email"
-            className="text-black mb-4"
+            className="text-black mb-4 w-full"
             type="email"
+            required
             {...register("email", { required: true })}
           />
           <label htmlFor="" className="text-left">
@@ -76,8 +77,9 @@ const LoginPage = () => {
           </label>
           <input
             placeholder="Your Password"
-            className="text-black mb-4"
+            className="text-black mb-4 w-full"
             type="password"
+            required
             {...register("password", { required: true })}
           />
           <button

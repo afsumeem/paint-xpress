@@ -61,33 +61,47 @@ const Navbar: React.FC = () => {
 
             {/*  */}
             {session?.user && (
-              <button
-                className="navLink "
-                style={{ backgroundColor: "skyblue" }}
-                onClick={() => signout()}
-              >
-                LogOut
-              </button>
+              <>
+                <button
+                  className="navLink "
+                  style={{ backgroundColor: "skyblue" }}
+                  onClick={() => signout()}
+                >
+                  LogOut
+                </button>
+                <Link href="/dashboard">
+                  {" "}
+                  <button className="navLink ">Dashboard</button>
+                </Link>
+              </>
             )}
 
             {user?.email && (
-              <button
-                className="navLink"
-                onClick={async () => {
-                  const success = await signOut();
-                  if (success) {
-                    alert("You are sign out");
-                  }
-                }}
-              >
-                Logout
-              </button>
+              <>
+                <button
+                  className="navLink"
+                  onClick={async () => {
+                    const success = await signOut();
+                    if (success) {
+                      alert("You are sign out");
+                    }
+                  }}
+                >
+                  Logout
+                </button>
+                <Link href="/dashboard">
+                  {" "}
+                  <button className="navLink ">Dashboard</button>
+                </Link>
+              </>
             )}
 
             {session?.user || user?.email ? (
-              <>
-                <h2>{session?.user?.name || user?.email}</h2>
-              </>
+              <div className="flex items-center justify-center">
+                <h2 className="text-xl">
+                  {session?.user?.name || user?.email}
+                </h2>
+              </div>
             ) : (
               <>
                 <Link href="/login">
@@ -157,29 +171,47 @@ const Navbar: React.FC = () => {
               )} */}
 
               {session?.user && (
-                <button
-                  className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 "
-                  onClick={() => signout()}
-                >
-                  LogOut
-                </button>
+                <>
+                  <Link href="/dashboard">
+                    {" "}
+                    <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
+                      Dashboard
+                    </button>
+                  </Link>
+                  <button
+                    className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 "
+                    onClick={() => signout()}
+                  >
+                    LogOut
+                  </button>
+                </>
               )}
               {user?.email && (
-                <button
-                  className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 "
-                  onClick={async () => {
-                    const success = await signOut();
-                    if (success) {
-                      alert("You are sign out");
-                    }
-                  }}
-                >
-                  Logout
-                </button>
+                <>
+                  <Link href="/dashboard">
+                    {" "}
+                    <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
+                      Dashboard
+                    </button>
+                  </Link>
+                  <button
+                    className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 "
+                    onClick={async () => {
+                      const success = await signOut();
+                      if (success) {
+                        alert("You are sign out");
+                      }
+                    }}
+                  >
+                    Logout
+                  </button>
+                </>
               )}
               {session?.user || user?.email ? (
                 <>
-                  <h2>{session?.user?.name || user?.email}</h2>
+                  <h2 className="text-xl text-center">
+                    {session?.user?.name || user?.email}
+                  </h2>
                 </>
               ) : (
                 <>

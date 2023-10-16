@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
+import RootLayout from "@/components/Layouts/RootLayout";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -28,7 +29,7 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("Option 1", "1", <PieChartOutlined />),
+  getItem("User Profile", "1", <PieChartOutlined />),
   getItem("Option 2", "2", <DesktopOutlined />),
   getItem("User", "sub1", <UserOutlined />, [
     getItem("Tom", "3"),
@@ -42,7 +43,7 @@ const items: MenuItem[] = [
   getItem("Files", "9", <FileOutlined />),
 ];
 
-const DashboardPage: React.FC = () => {
+const DashboardPage = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -89,3 +90,7 @@ const DashboardPage: React.FC = () => {
 };
 
 export default DashboardPage;
+
+DashboardPage.getLayout = function getLayout(page: React.ReactElement) {
+  return <RootLayout>{page}</RootLayout>;
+};

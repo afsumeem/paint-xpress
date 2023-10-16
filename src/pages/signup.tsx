@@ -11,6 +11,7 @@ import Link from "next/link";
 interface IFormInput {
   email: string;
   password: string;
+  terms: boolean;
 }
 
 const SignUpPage = () => {
@@ -30,10 +31,10 @@ const SignUpPage = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     createUserWithEmailAndPassword(data.email, data.password);
-    if (user) {
-      message.success("user signup successfully");
-    }
-    router.push("/");
+    // if (user) {
+    message.success("user signup successfully");
+    // }
+    router.push("/profile");
   };
 
   if (loading) {
@@ -64,19 +65,42 @@ const SignUpPage = () => {
           </label>
           <input
             type="email"
-            className="text-black mb-4"
+            className="text-black mb-4 w-full"
             placeholder="email"
+            required
             {...register("email", { required: true })}
           />
           <label htmlFor="" className="text-left">
             Your Password
           </label>
           <input
-            className="text-black mb-4"
+            className="text-black mb-4 w-full"
             placeholder="password"
             type="password"
+            required
             {...register("password", { required: true })}
           />
+
+          {/*  */}
+          <div className="">
+            <input
+              className="text-black w-7"
+              type="checkbox"
+              id="terms"
+              required
+              {...register("terms", { required: true })}
+              value="Terms and Conditions"
+            />
+            <label htmlFor="terms">Terms and Conditions</label>
+          </div>
+          {/*  */}
+          <br />
+          <button className="underline text-blue-800">
+            {" "}
+            <Link href="/policy">Privacy Policy</Link>
+          </button>
+
+          {/*  */}
           <button
             type="submit"
             className="bg-black text-white block mx-auto p-2 rounded"
