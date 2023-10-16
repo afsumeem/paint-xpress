@@ -3,7 +3,7 @@ import { addToBookingList } from "@/redux/features/services/serviceSlice";
 import { PhoneOutlined } from "@ant-design/icons";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { IServices } from "@/types/global";
-import { Col, Row, message } from "antd";
+import { Col, Pagination, Row, message } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -117,6 +117,7 @@ const HomeServices = ({ services }: IProps) => {
           </Col>
           // </div>
         ))}
+        <Pagination defaultCurrent={6} total={500} />
       </Row>
       <Link href="/services ">
         <button className="px-6 py-2 bg-sky-600 uppercase mt-6 text-white font-bold block m-auto mb-4">

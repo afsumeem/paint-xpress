@@ -2,13 +2,13 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import { useGetServicesQuery } from "@/redux/features/services/serviceApi";
 import { IServices } from "@/types/global";
-import { Col, Row, Spin, message } from "antd";
+import { Breadcrumb, Col, Row, Spin, message } from "antd";
 import { PhoneOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { addToBookingList } from "@/redux/features/services/serviceSlice";
-
+import { HomeOutlined } from "@ant-design/icons";
 //
 
 interface IProps {
@@ -50,6 +50,27 @@ const ServicePage = ({ services, categories }: IProps) => {
 
   return (
     <div className="mx-10 mt-10">
+      <Breadcrumb
+        style={{ marginBottom: "25px" }}
+        items={[
+          {
+            href: "/",
+            title: (
+              <>
+                <HomeOutlined />
+                <span>Home</span>
+              </>
+            ),
+          },
+          {
+            title: (
+              <>
+                <span>Services</span>
+              </>
+            ),
+          },
+        ]}
+      />
       <div className="mb-10 section-title">
         <h4 className="font-bold text-md text-sky-400 uppercase ">
           Our Services

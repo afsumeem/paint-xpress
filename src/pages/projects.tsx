@@ -2,10 +2,12 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import { useGetProjectsQuery } from "@/redux/features/projects/projectApi";
 import { IProjects } from "@/types/global";
-import { Col, Row, Spin } from "antd";
+import { Breadcrumb, Col, Row, Spin } from "antd";
 import Link from "next/link";
 import React, { useState } from "react";
 import Head from "next/head";
+import { HomeOutlined } from "@ant-design/icons";
+
 //
 
 interface IProps {
@@ -35,6 +37,27 @@ const Projects = ({ categories }: IProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Breadcrumb
+        style={{ marginBottom: "25px" }}
+        items={[
+          {
+            href: "/",
+            title: (
+              <>
+                <HomeOutlined />
+                <span>Home</span>
+              </>
+            ),
+          },
+          {
+            title: (
+              <>
+                <span>Projects</span>
+              </>
+            ),
+          },
+        ]}
+      />
       <div className="mb-10 section-title">
         <h4 className="font-bold text-md text-sky-400 uppercase ">
           Latest Projects

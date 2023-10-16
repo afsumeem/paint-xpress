@@ -10,6 +10,10 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { useState } from "react";
 import { addToBookingList } from "@/redux/features/services/serviceSlice";
 import ReactStars from "react-rating-stars-component";
+import { HomeOutlined } from "@ant-design/icons";
+import { Breadcrumb } from "antd";
+
+//
 
 interface IProps {
   service: IServices;
@@ -41,9 +45,33 @@ const SingleService = ({ service, projects }: IProps) => {
   };
 
   return (
-    <div>
-      {" "}
-      <div className="my-20 mx-10">
+    <div className="mt-8 mx-10">
+      <Breadcrumb
+        style={{ marginBottom: "25px" }}
+        items={[
+          {
+            href: "/",
+            title: (
+              <>
+                <HomeOutlined />
+                <span>Home</span>
+              </>
+            ),
+          },
+          {
+            href: "/services",
+            title: (
+              <>
+                <span>Services</span>
+              </>
+            ),
+          },
+          {
+            title: <>{service.title}</>,
+          },
+        ]}
+      />
+      <div className="mb-20 ">
         <Row gutter={30}>
           <Col sm={24} md={12} lg={12}>
             <img
