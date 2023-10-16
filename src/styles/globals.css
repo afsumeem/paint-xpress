@@ -86,7 +86,7 @@ position: relative
   background-image: url("../assests/images/about.jpg");
 
   /* Set a specific height */
-  min-height: 1000px;
+  min-height: 800px;
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;

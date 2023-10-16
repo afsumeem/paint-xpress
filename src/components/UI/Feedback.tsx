@@ -34,7 +34,7 @@ const Feedback = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col items-center justify-center"
         >
-          <div className="bg-white p-10 mt-52">
+          <div className="bg-white p-10 mt-36">
             <h2 className="text-center text-3xl font-semibold mb-5 upper">
               Feedback
             </h2>
