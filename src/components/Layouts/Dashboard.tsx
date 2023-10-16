@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
+  HistoryOutlined,
+  BookOutlined,
+  EditOutlined,
+  NotificationOutlined,
   UserOutlined,
+  InteractionOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
-import RootLayout from "@/components/Layouts/RootLayout";
+import Link from "next/link";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -29,21 +30,20 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("User Profile", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
-    getItem("Tom", "3"),
-    getItem("Bill", "4"),
-    getItem("Alex", "5"),
-  ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
-    getItem("Team 1", "6"),
-    getItem("Team 2", "8"),
-  ]),
-  getItem("Files", "9", <FileOutlined />),
+  getItem(<Link href="/profile">User Profile</Link>, "", <UserOutlined />),
+  getItem(
+    <Link href="/bookinghistory">Booking History</Link>,
+    "2",
+    <HistoryOutlined />
+  ),
+  getItem("Edit Profile", "3", <EditOutlined />),
+  getItem("User's Activities", "4", <UserOutlined />),
+  getItem("Booking Status", "5", <BookOutlined />),
+  getItem("Notifications Center", "6", <NotificationOutlined />),
+  getItem("Quick Actions", "7", <InteractionOutlined />),
 ];
 
-const DashboardPage = () => {
+const DashboardLayout = ({ children }: any) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -67,10 +67,6 @@ const DashboardPage = () => {
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }} />
         <Content style={{ margin: "0 16px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
           <div
             style={{
               padding: 24,
@@ -78,19 +74,12 @@ const DashboardPage = () => {
               background: colorBgContainer,
             }}
           >
-            Bill is a cat.
+            {children}
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2023 Created by Ant UED
-        </Footer>
       </Layout>
     </Layout>
   );
 };
 
-export default DashboardPage;
-
-DashboardPage.getLayout = function getLayout(page: React.ReactElement) {
-  return <RootLayout>{page}</RootLayout>;
-};
+export default DashboardLayout;

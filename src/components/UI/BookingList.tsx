@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import { Badge, Button, Drawer } from "antd";
-import { BookOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { removeFromBookingList } from "@/redux/features/services/serviceSlice";
 
@@ -21,7 +21,7 @@ const BookingList: React.FC = () => {
   return (
     <>
       <Badge count={services.length} size="small">
-        <BookOutlined
+        <ShoppingCartOutlined
           shape="square"
           sizes="large"
           onClick={showDrawer}

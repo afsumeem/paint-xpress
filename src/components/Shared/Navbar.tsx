@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
                 >
                   LogOut
                 </button>
-                <Link href="/dashboard">
+                <Link href="/profile">
                   {" "}
                   <button className="navLink ">Dashboard</button>
                 </Link>
@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
                 >
                   Logout
                 </button>
-                <Link href="/dashboard">
+                <Link href="/profile">
                   {" "}
                   <button className="navLink ">Dashboard</button>
                 </Link>
@@ -172,7 +172,7 @@ const Navbar: React.FC = () => {
 
               {session?.user && (
                 <>
-                  <Link href="/dashboard">
+                  <Link href="/profile">
                     {" "}
                     <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
                       Dashboard
@@ -188,7 +188,7 @@ const Navbar: React.FC = () => {
               )}
               {user?.email && (
                 <>
-                  <Link href="/dashboard">
+                  <Link href="/profile">
                     {" "}
                     <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
                       Dashboard

@@ -83,7 +83,7 @@ position: relative
 
  /*  */
 .parallax{
-  background-image: url("../assests/images/about.jpg");
+  background-image: url("../assests/images/download.jpg");
 
   /* Set a specific height */
   min-height: 800px;

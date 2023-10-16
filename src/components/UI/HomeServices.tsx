@@ -42,7 +42,7 @@ const HomeServices = ({ services }: IProps) => {
 
   //pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 5;
+  const pageSize = 4;
 
   const handlePageChange = (page: React.SetStateAction<number>) => {
     setCurrentPage(page);
@@ -132,14 +132,13 @@ const HomeServices = ({ services }: IProps) => {
           </Col>
           // </div>
         ))}
-
-        <Pagination
-          current={currentPage}
-          total={services.length}
-          pageSize={pageSize}
-          onChange={handlePageChange}
-        />
       </Row>
+      <Pagination
+        current={currentPage}
+        total={services.length}
+        pageSize={pageSize}
+        onChange={handlePageChange}
+      />
       <Link href="/services ">
         <button className="px-6 py-2 bg-sky-600 uppercase mt-6 text-white font-bold block m-auto mb-4">
           See all services
