@@ -6,9 +6,9 @@ import { Col, Row, message } from "antd";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import { PhoneOutlined } from "@ant-design/icons";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { useState } from "react";
+import { useAppDispatch } from "@/redux/hook";
 import { addToBookingList } from "@/redux/features/services/serviceSlice";
+// @ts-ignore
 import ReactStars from "react-rating-stars-component";
 import { HomeOutlined } from "@ant-design/icons";
 import { Breadcrumb } from "antd";
