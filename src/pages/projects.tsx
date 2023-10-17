@@ -192,7 +192,9 @@ Projects.getLayout = function getLayout(page: React.ReactElement) {
 
 export const getStaticProps = async () => {
   //fetch latest projects
-  const response = await fetch("http://localhost:5000/projects");
+  const response = await fetch(
+    "https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/projects"
+  );
   const projects = await response.json();
 
   //

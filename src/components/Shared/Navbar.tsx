@@ -51,12 +51,8 @@ const Navbar: React.FC = () => {
               <button className="navLink">Projects</button>
             </Link>
 
-            <Link href="/team" target="_blank">
+            <Link href="/team">
               <button className="navLink ">Our Team</button>
-            </Link>
-            <Link href="/contact">
-              {" "}
-              <button className="navLink ">Contact</button>
             </Link>
 
             {/*  */}
@@ -152,12 +148,6 @@ const Navbar: React.FC = () => {
                 {" "}
                 <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
                   Our Team
-                </button>
-              </Link>
-              <Link href="/contact">
-                {" "}
-                <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
-                  Contact
                 </button>
               </Link>
 

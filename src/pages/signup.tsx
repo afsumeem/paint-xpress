@@ -3,9 +3,12 @@ import styles from "@/styles/Login.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "@/firebase/firebase.auth";
-import { message } from "antd";
-import { useRouter } from "next/router";
+import { Alert, Spin, message } from "antd";
+// import { useRouter } from "next/router";
 import Link from "next/link";
+import { useState } from "react";
+import { usePostUsersMutation } from "@/redux/features/users/usersApi";
+import { useRouter } from "next/navigation";
 
 //
 interface IFormInput {
@@ -17,28 +20,48 @@ interface IFormInput {
 const SignUpPage = () => {
   //
   const router = useRouter();
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [postUsers, options] = usePostUsersMutation();
+
+  //
+
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-  // console.log(user);
 
+  console.log(user);
   //
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IFormInput>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    createUserWithEmailAndPassword(data.email, data.password);
-    // if (user) {
-    message.success("user signup successfully");
-    // }
-    router.push("/profile");
+  //form submit handler
+
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    try {
+      // Create user using Firebase
+      await createUserWithEmailAndPassword(data.email, data.password);
+
+      const options = {
+        email: data.email,
+      };
+      await postUsers(options);
+
+      router.push("/profile");
+    } catch (error) {
+      console.error("Error occurred during registration:", error);
+    }
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <p>
+        <Spin size="large" />
+      </p>
+    );
   }
 
   //
@@ -53,85 +76,102 @@ const SignUpPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.form}>
-        <h3 className="text-center font-bold my-4 text-xl">
-          Create Your Account
-        </h3>
+      {isSuccess && (
+        <Alert
+          message="Create Account Successfully"
+          description="Detailed description and advice about successful copywriting."
+          type="success"
+          showIcon
+        />
+      )}
+      <div
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(40,155,255,1) 0%, rgba(29,79,144,1) 63%, rgba(0,109,193,1) 99%)",
+          padding: "40px",
+          // minHeight:""
+        }}
+      >
+        {/*  */}
 
-        <hr />
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="" className="text-left">
-            Your Email
-          </label>
-          <input
-            type="email"
-            className="text-black mb-4 w-full"
-            placeholder="email"
-            required
-            {...register("email", { required: true })}
-          />
-          <label htmlFor="" className="text-left">
-            Your Password
-          </label>
-          <input
-            className="text-black mb-4 w-full"
-            placeholder="password"
-            type="password"
-            required
-            {...register("password", { required: true })}
-          />
+        {/*  */}
+        <div className={styles.form}>
+          {error && (
+            <div className="text-center">
+              <p>Error Occurred!!</p>
+              <p>{error.message}</p>
+            </div>
+          )}
+          <h3 className="text-center font-bold my-4 text-2xl uppercase">
+            Create Your Account
+          </h3>
 
-          {/*  */}
-          <div className="">
+          <hr />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="" className="text-lg">
+              Email
+            </label>
+            <br />
             <input
-              className="text-black w-7"
-              type="checkbox"
-              id="terms"
+              type="email"
+              className="text-black mb-8 w-full mt-2"
+              placeholder="Email"
               required
-              {...register("terms", { required: true })}
-              value="Terms and Conditions"
+              {...register("email", { required: true })}
             />
-            <label htmlFor="terms">Terms and Conditions</label>
-          </div>
-          {/*  */}
-          <br />
-          <button className="underline text-blue-800">
-            {" "}
-            <Link href="/policy">Privacy Policy</Link>
-          </button>
 
-          {/*  */}
-          <button
-            type="submit"
-            className="bg-black text-white block mx-auto p-2 rounded"
-          >
-            Sign Up
-          </button>
-        </form>
-        <Link href="/login">
-          <h4 className="text-center mt-4">
-            Already have an account?{" "}
-            <span className="underline text-blue-800">Login</span>
-          </h4>
-        </Link>
+            <label htmlFor="" className="text-lg">
+              Password
+            </label>
+            <br />
+            <input
+              className="text-black mb-8 w-full mt-2"
+              placeholder="Password"
+              type="password"
+              required
+              {...register("password", { required: true })}
+            />
 
-        <h4 className="text-center text-xl font-mono mt-10">
-          Back to{" "}
-          <Link href="/">
-            <span className="underline text-blue-800">home</span>
+            {/*  */}
+            <div className="flex flex-col md:flex-row  justify-between">
+              <div>
+                <input
+                  className="text-black w-7"
+                  type="checkbox"
+                  id="terms"
+                  required
+                  {...register("terms", { required: true })}
+                  value="Accept"
+                />
+                <label htmlFor="terms">Terms and Conditions</label>
+              </div>
+              <span className="underline text-blue-800 ml-4">
+                <Link href="/policy">Privacy Policy</Link>
+              </span>
+            </div>
+
+            <button
+              type="submit"
+              className="bg-blue-600 text-white block mx-auto p-2 rounded w-full"
+            >
+              Sign Up
+            </button>
+          </form>
+          <Link href="/login">
+            <h4 className="text-center mt-4">
+              Already have an account?{" "}
+              <span className="underline text-blue-800">Login</span>
+            </h4>
           </Link>
-        </h4>
+
+          <h4 className="text-center mt-4">
+            Back to{" "}
+            <Link href="/">
+              <span className="underline text-blue-800">home</span>
+            </Link>
+          </h4>
+        </div>
       </div>
-      {error && (
-        <div className="text-center">
-          <p>Error: {error.message}</p>
-        </div>
-      )}
-      {user && (
-        <div>
-          <p className="text-center">Registered User: {user.user.email}</p>
-        </div>
-      )}
     </div>
   );
 };

@@ -2,20 +2,23 @@
 import DashboardLayout from "@/components/Layouts/Dashboard";
 import RootLayout from "@/components/Layouts/RootLayout";
 import auth from "@/firebase/firebase.auth";
-import { Breadcrumb, Spin } from "antd";
+import { Breadcrumb, Spin, message } from "antd";
 import Head from "next/head";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { useSession, signOut as signout } from "next-auth/react";
 import Link from "next/link";
 import userImg from "../assests/images/user.png";
 import Image from "next/image";
+import usePrivateRoute from "@/privateRoute/layout";
+
 //
 
 const UserProfilePage = () => {
-  const [signOut, loading, error] = useSignOut(auth);
+  const [signOut, error] = useSignOut(auth);
   const { data: session } = useSession();
 
   const [user] = useAuthState(auth);
+  const loading = usePrivateRoute();
 
   if (loading) {
     return <Spin size="large" />;
@@ -39,6 +42,9 @@ const UserProfilePage = () => {
       <hr />
       <div>
         <div className=" flex justify-end">
+          <button className="navLink">
+            <Link href="/editprofile">Edit Profile</Link>
+          </button>
           {session?.user && (
             <>
               <button
@@ -58,7 +64,7 @@ const UserProfilePage = () => {
                 onClick={async () => {
                   const success = await signOut();
                   if (success) {
-                    alert("You are sign out");
+                    message.success("You are sign out");
                   }
                 }}
               >

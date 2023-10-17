@@ -5,9 +5,9 @@ import { signIn } from "next-auth/react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import auth from "@/firebase/firebase.auth";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useRouter } from "next/router";
 import { Spin } from "antd";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 //
 
 interface IFormInput {
@@ -29,10 +29,14 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<IFormInput>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data: any) => {
-    signInWithEmailAndPassword(data.email, data.password);
+  const onSubmit: SubmitHandler<IFormInput> = async (data: any) => {
+    try {
+      await signInWithEmailAndPassword(data.email, data.password);
 
-    router.push("/profile");
+      router.push("/profile");
+    } catch (error) {
+      console.error("Error occurred during login:", error);
+    }
   };
 
   //
@@ -54,79 +58,95 @@ const LoginPage = () => {
       </Head>
 
       {/*  */}
+      <div
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(40,155,255,1) 0%, rgba(29,79,144,1) 63%, rgba(0,109,193,1) 99%)",
+          padding: "40px",
+          height: "100vh",
+        }}
+      >
+        <div className={styles.form}>
+          <h3 className="text-center font-bold my-4 text-2xl">
+            LOGIN TO CONTINUE
+          </h3>
 
-      <div className={styles.form}>
-        <h3 className="text-center font-bold my-4 text-xl">
-          LOGIN TO CONTINUE
-        </h3>
+          <hr />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="" className="text-lg">
+              Email
+            </label>
+            <br />
+            <input
+              type="email"
+              className="text-black mb-4 w-full mt-2"
+              placeholder="Email"
+              required
+              {...register("email", { required: true })}
+            />
 
-        <hr />
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="" className="text-left">
-            Your Email
-          </label>
-          <input
-            placeholder="Your Email"
-            className="text-black mb-4 w-full"
-            type="email"
-            required
-            {...register("email", { required: true })}
-          />
-          <label htmlFor="" className="text-left">
-            Your Password
-          </label>
-          <input
-            placeholder="Your Password"
-            className="text-black mb-4 w-full"
-            type="password"
-            required
-            {...register("password", { required: true })}
-          />
-          <button
-            type="submit"
-            className="bg-black text-white block mx-auto p-2 rounded"
-          >
-            Login
-          </button>
-        </form>
-        <Link href="/signup">
-          <h4 className="text-center mt-4">
-            Dont have an account?{" "}
-            <span className="underline text-blue-800">SignUp</span>
-          </h4>
-        </Link>
-        <div className={styles.icons}>
-          <GithubOutlined
-            onClick={() =>
-              signIn("github", { callbackUrl: "http://localhost:3000/" })
-            }
-          />
+            <label htmlFor="" className="text-lg">
+              Password
+            </label>
+            <br />
+            <input
+              className="text-black w-full mt-2 mb-2"
+              placeholder="Password"
+              type="password"
+              required
+              {...register("password", { required: true })}
+            />
 
-          <GoogleOutlined
-            onClick={() =>
-              signIn("google", { callbackUrl: "http://localhost:3000/" })
-            }
-          />
-        </div>
-
-        {/*  */}
-        <h4 className="text-center text-xl font-mono">
-          Back to{" "}
-          <Link href="/">
-            <span className="underline text-blue-800">home</span>
+            <button
+              type="submit"
+              className="bg-blue-600 text-white block mx-auto p-2 rounded w-full"
+            >
+              Login
+            </button>
+          </form>
+          <Link href="/signup">
+            <h4 className="text-center mt-4">
+              Dont have an account?{" "}
+              <span className="underline text-blue-800">SignUp</span>
+            </h4>
           </Link>
-        </h4>
+          {/* <div className={styles.icons}>
+            <GithubOutlined
+              onClick={() =>
+                signIn("github", {
+                  callbackUrl: "http://localhost:3000/profile/",
+                })
+              }
+            />
+
+            <GoogleOutlined
+              onClick={() =>
+                signIn("google", {
+                  callbackUrl: "http://localhost:3000/profile/",
+                })
+              }
+            />
+          </div> */}
+
+          {/*  */}
+          <h4 className="text-center  ">
+            Back to{" "}
+            <Link href="/">
+              <span className="underline text-blue-800">home</span>
+            </Link>
+          </h4>
+        </div>
+        {error && (
+          <div>
+            <p>Error: {error?.message}</p>
+          </div>
+        )}
+        {user && (
+          <div>
+            <p>Signed In User: {user.user.email}</p>
+          </div>
+        )}
       </div>
-      {error && (
-        <div>
-          <p>Error: {error?.message}</p>
-        </div>
-      )}
-      {user && (
-        <div>
-          <p>Signed In User: {user.user.email}</p>
-        </div>
-      )}
     </div>
   );
 };

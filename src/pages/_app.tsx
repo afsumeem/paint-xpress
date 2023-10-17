@@ -16,12 +16,12 @@ export default function App({ Component, pageProps }: AppProps) {
   const getLayout =
     (Component as ComponentWithLayout).getLayout || ((page) => page);
   return (
-    <SessionProvider session={pageProps.session}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <SessionProvider session={pageProps.session}>
         <StyleProvider hashPriority="high">
           {getLayout(<Component {...pageProps} />)}
         </StyleProvider>
-      </Provider>
-    </SessionProvider>
+      </SessionProvider>
+    </Provider>
   );
 }

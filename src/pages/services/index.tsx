@@ -4,7 +4,6 @@ import RootLayout from "@/components/Layouts/RootLayout";
 import { useGetServicesQuery } from "@/redux/features/services/serviceApi";
 import { IServices } from "@/types/global";
 import { Breadcrumb, Col, Pagination, Row, Spin, message } from "antd";
-import { PhoneOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
@@ -18,7 +17,7 @@ interface IProps {
   categories: string[];
 }
 
-const ServicePage = ({ services, categories }: IProps) => {
+const ServicePage = ({ categories }: IProps) => {
   //search and filter functionality for services
 
   const [selectCategory, setSelectCategory] = useState("");
@@ -204,10 +203,7 @@ const ServicePage = ({ services, categories }: IProps) => {
                           <h3 className="text-xl mb-2 font-bold">
                             $ {service.price}
                           </h3>
-                          <p className="mb-4">
-                            {" "}
-                            <PhoneOutlined /> {service.contact}
-                          </p>
+                          <p className="mb-4 underline"> {service.category}</p>
                           <hr />
 
                           <button
@@ -245,7 +241,9 @@ ServicePage.getLayout = function getLayout(page: React.ReactElement) {
 
 export const getStaticProps = async () => {
   //fetch latest projects
-  const response = await fetch("http://localhost:5000/projects");
+  const response = await fetch(
+    "https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/projects"
+  );
   const projects = await response.json();
 
   //

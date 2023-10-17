@@ -221,7 +221,9 @@ SingleService.getLayout = function getLayout(page: React.ReactElement) {
 //
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/services");
+  const res = await fetch(
+    "https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/services"
+  );
   const services = await res.json();
 
   const paths = services?.map((service: IServices) => ({
@@ -235,11 +237,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
 
-  const res = await fetch(`http://localhost:5000/services/${params?.id}`);
+  const res = await fetch(
+    `https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/services/${params?.id}`
+  );
   const service = await res.json();
 
   //projects
-  const response = await fetch("http://localhost:5000/projects");
+  const response = await fetch(
+    "https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/projects"
+  );
   const projects = await response.json();
   //   const singleProject = projects.map((project: IProjects) => project);
 

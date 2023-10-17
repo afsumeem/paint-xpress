@@ -75,7 +75,9 @@ OurTeam.getLayout = function getLayout(page: React.ReactElement) {
 export const getStaticProps: GetStaticProps<IProps> = async () => {
   //customer reviews
 
-  const res = await fetch("http://localhost:5000/teams");
+  const res = await fetch(
+    "https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/teams"
+  );
   const teams = await res.json();
 
   return {

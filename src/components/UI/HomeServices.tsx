@@ -17,25 +17,11 @@ interface IProps {
 const HomeServices = ({ services }: IProps) => {
   const dispatch = useAppDispatch();
 
-  const [buttonClicked, setButtonClicked] = useState(false);
-
-  // const handleAddToBookingList = (service: IServices) => {
-  //   dispatch(addToBookingList(service));
-  //   message.success("Service booked");
-  // };
-
-  const selectedService = useAppSelector((state) => state.bookingList.services);
-
   //
 
   const handleAddToBookingList = (service: IServices) => {
-    // if (!buttonClicked) {
     dispatch(addToBookingList(service));
     message.success("Service booked");
-    // setButtonClicked(true);
-    // } else {
-    //   message.warning("Service already booked");
-    // }
   };
 
   //
@@ -81,9 +67,9 @@ const HomeServices = ({ services }: IProps) => {
             lg={8}
             xl={6}
             key={i}
-            className="section-card mb-10"
+            className="section-card mb-10 "
           >
-            <div>
+            <div className="">
               <div className="bg-black overflow-hidden">
                 <Link href={`/services/${service._id}`}>
                   <img
@@ -97,7 +83,7 @@ const HomeServices = ({ services }: IProps) => {
               </div>
 
               <div
-                className="mx-2 p-6 -mt-6  shadow-xl h-90"
+                className="mx-2 p-6 -mt-6  shadow-xl h-90 "
                 style={{ background: "white", position: "sticky" }}
               >
                 <Link href={`/services/${service._id}`}>
@@ -107,7 +93,7 @@ const HomeServices = ({ services }: IProps) => {
                 </Link>
                 <hr />
                 <p className="my-4 text-base">
-                  {service.description}
+                  {service.description.slice(0, 60)}
                   <br />
                   <Link href={`/services/${service._id}`}>
                     <span className="underline">See details</span>

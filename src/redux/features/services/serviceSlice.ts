@@ -7,11 +7,13 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 interface IBookingList {
   services: IServices[];
   total: number;
+  // priceRange
 }
 
 const initialState: IBookingList = {
   services: [],
   total: 0,
+  // priceRange:
 };
 
 const serviceSlice = createSlice({
