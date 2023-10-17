@@ -3,17 +3,17 @@ import DashboardLayout from "@/components/Layouts/Dashboard";
 import RootLayout from "@/components/Layouts/RootLayout";
 import { removeFromBookingList } from "@/redux/features/services/serviceSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { Button, Space, Table, message } from "antd";
+import { Space, Table, message } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
 const BookingStatusPage = () => {
   const { services } = useAppSelector((state) => state.bookingList);
   const dispatch = useAppDispatch();
 
-  const handleDeleteItem = (id: any) => {
-    dispatch(removeFromBookingList(id));
-    message.success("item deleted");
-  };
+  // const handleDeleteItem = (id: any) => {
+  //   dispatch(removeFromBookingList(id));
+  //   message.success("item deleted");
+  // };
 
   interface DataType {
     key: string;

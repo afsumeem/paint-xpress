@@ -2,14 +2,17 @@
 
 import RootLayout from "@/components/Layouts/RootLayout";
 import auth from "@/firebase/firebase.auth";
-import { Col, Row, Spin, message } from "antd";
+import { Breadcrumb, Col, Row, Space, Spin, message } from "antd";
 import Head from "next/head";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+import { HomeOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import userImg from "../assests/images/user.png";
 import Image from "next/image";
 import usePrivateRoute from "@/privateRoute/layout";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import Table, { ColumnsType } from "antd/es/table";
 
 //
 
@@ -22,8 +25,18 @@ interface IFormInput {
   state: string;
   zip: string;
 }
+//
+interface DataType {
+  key: string;
+  title: string;
+  price: number;
+  category: string;
+  rating: number;
+}
 
 const Profile = () => {
+  const { services } = useAppSelector((state) => state.bookingList);
+  const dispatch = useAppDispatch();
   const [signOut] = useSignOut(auth);
   const {
     register,
@@ -43,6 +56,21 @@ const Profile = () => {
     message.success("payment done");
     reset();
   };
+
+  //
+  const columns: ColumnsType<DataType> = [
+    {
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
+    },
+
+    {
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+    },
+  ];
 
   return (
     <div>
@@ -104,6 +132,28 @@ const Profile = () => {
             </div>
           </Col>
           <Col xs={24} sm={24} md={16} lg={18}>
+            <Breadcrumb
+              style={{ marginBottom: "25px" }}
+              items={[
+                {
+                  href: "/",
+                  title: (
+                    <>
+                      <HomeOutlined />
+                      <span>Home</span>
+                    </>
+                  ),
+                },
+                {
+                  title: (
+                    <>
+                      <span>{user?.email}</span>
+                    </>
+                  ),
+                },
+              ]}
+            />
+
             <div className="mt-8">
               <h2 className="text-center text-2xl font-bold uppercase mb-2">
                 Enter Your Payment Details
@@ -174,6 +224,23 @@ const Profile = () => {
                   </button>
                 </form>
               </div>
+            </div>
+            <div>
+              {services.length === 0 ? (
+                <h2 className="text-red-500 text-xl">
+                  <Link href="/services">Booking Services</Link>
+                </h2>
+              ) : (
+                <>
+                  <div>
+                    <h3 className="text-3xl text-center mb-6">
+                      Booking History
+                    </h3>
+                    <hr className="mb-4" />
+                  </div>
+                  <Table columns={columns} dataSource={services} />
+                </>
+              )}
             </div>
           </Col>
         </Row>
