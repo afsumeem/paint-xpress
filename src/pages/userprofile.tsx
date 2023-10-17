@@ -18,10 +18,11 @@ const UserProfilePage = () => {
   const { data: session } = useSession();
 
   const [user] = useAuthState(auth);
+  //
   const loading = usePrivateRoute();
 
   if (loading) {
-    return <Spin size="large" />;
+    return <Spin size="large" className="text-center" />;
   }
 
   return (

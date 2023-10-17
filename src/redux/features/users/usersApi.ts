@@ -10,6 +10,22 @@ const usersApi = api.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      // updateUser: builder.mutation({
+      //   query: ({ id, data }) => ({
+      //     url: `/users/updateUser/${id}`,
+      //     method: "PATCH",
+      //     body: data,
+      //   }),
+      //   invalidatesTags: ["profile"],
+      // }),
+
+      //
+      // getUsers: builder.query({
+      //   query: () => ({
+      //     url: "/users",
+      //     providesTags: ["users"],
+      //   }),
+      // }),
     }),
   }),
 });

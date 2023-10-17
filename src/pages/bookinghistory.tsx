@@ -1,9 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import DashboardLayout from "@/components/Layouts/Dashboard";
 import RootLayout from "@/components/Layouts/RootLayout";
+import usePrivateRoute from "@/privateRoute/layout";
 import { removeFromBookingList } from "@/redux/features/services/serviceSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { Space, Table, message } from "antd";
+import { IServices } from "@/types/global";
+import { Space, Spin, Table, message } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
 const BookingHistoryPage = () => {
@@ -15,6 +17,13 @@ const BookingHistoryPage = () => {
     message.success("item deleted");
   };
 
+  //
+  const loading = usePrivateRoute();
+
+  if (loading) {
+    return <Spin size="large" className="text-center" />;
+  }
+
   interface DataType {
     key: string;
     title: string;
@@ -22,7 +31,10 @@ const BookingHistoryPage = () => {
     category: string;
     rating: number;
   }
-  const columns: ColumnsType<DataType> = [
+  //
+  interface DataType extends IServices {}
+
+  const columns: ColumnsType<IServices> = [
     {
       title: "Title",
       dataIndex: "title",
@@ -60,6 +72,8 @@ const BookingHistoryPage = () => {
       ),
     },
   ];
+  //
+
   return (
     <div>
       {services.length === 0 ? (

@@ -2,10 +2,10 @@
 import DashboardLayout from "@/components/Layouts/Dashboard";
 import RootLayout from "@/components/Layouts/RootLayout";
 import auth from "@/firebase/firebase.auth";
-import { Breadcrumb, message } from "antd";
+import usePrivateRoute from "@/privateRoute/layout";
+import { Breadcrumb, Spin, message } from "antd";
 import Head from "next/head";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useSession } from "next-auth/react";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -13,14 +13,14 @@ type FormValues = {
   firstName: string;
   lastName: string;
   email: string;
+  contact: string;
+  address: string;
 };
 
 //
 
 const EditProfile = () => {
   const { register, handleSubmit, reset } = useForm<FormValues>();
-
-  const { data: session } = useSession();
 
   const [user] = useAuthState(auth);
 
@@ -30,6 +30,11 @@ const EditProfile = () => {
       reset();
     }
   };
+  const loading = usePrivateRoute();
+
+  if (loading) {
+    return <Spin size="large" className="text-center" />;
+  }
 
   return (
     <div>
@@ -44,7 +49,7 @@ const EditProfile = () => {
       </Head>
       <Breadcrumb style={{ margin: "16px 0" }}>
         <Breadcrumb.Item>Edit Profile</Breadcrumb.Item>
-        <Breadcrumb.Item>{user?.email || session?.user?.name}</Breadcrumb.Item>
+        <Breadcrumb.Item>{user?.email}</Breadcrumb.Item>
       </Breadcrumb>
       <hr />
       <div>
@@ -57,7 +62,7 @@ const EditProfile = () => {
               Edit Your Profile
             </h2>
             <div className="flex w-full gap-5">
-              <div>
+              <div className="w-full">
                 <input
                   {...register("firstName")}
                   required
@@ -65,7 +70,7 @@ const EditProfile = () => {
                   className="p-2 w-full my-2 rounded border-b-2 bg-inherit border-neutral-300"
                 />
               </div>
-              <div className="">
+              <div className="w-full">
                 <input
                   placeholder="Last Name"
                   {...register("lastName")}
@@ -77,8 +82,22 @@ const EditProfile = () => {
             <input
               placeholder="Email"
               type="email"
-              defaultValue={session?.user?.email || user?.email || ""}
+              defaultValue={user?.email || ""}
               {...register("email")}
+              required
+              className="p-2 w-full my-2 rounded border-b-2 bg-inherit border-neutral-300"
+            />
+            <input
+              placeholder="Contact"
+              type="text"
+              {...register("contact")}
+              required
+              className="p-2 w-full my-2 rounded border-b-2 bg-inherit border-neutral-300"
+            />
+            <input
+              placeholder="Address"
+              type="text"
+              {...register("address")}
               required
               className="p-2 w-full my-2 rounded border-b-2 bg-inherit border-neutral-300"
             />

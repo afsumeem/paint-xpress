@@ -58,3 +58,9 @@ export interface ITeams {
   image: string;
   social_links: ISocial;
 }
+
+//
+
+export interface IUsers {
+  email: string;
+}

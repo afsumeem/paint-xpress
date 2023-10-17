@@ -1,22 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import DashboardLayout from "@/components/Layouts/Dashboard";
+
+import AdminDashboardLayout from "@/components/Layouts/AdminDashboard";
 import RootLayout from "@/components/Layouts/RootLayout";
-import usePrivateRoute from "@/privateRoute/layout";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { IServices } from "@/types/global";
-import { Space, Spin, Table, message } from "antd";
+import { Space, Table, message } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
-const BookingStatusPage = () => {
+const UsersProfilePage = () => {
   const { services } = useAppSelector((state) => state.bookingList);
-
-  //
-
-  const loading = usePrivateRoute();
-
-  if (loading) {
-    return <Spin size="large" className="text-center" />;
-  }
+  const dispatch = useAppDispatch();
 
   interface DataType {
     key: string;
@@ -78,12 +71,12 @@ const BookingStatusPage = () => {
   );
 };
 
-export default BookingStatusPage;
+export default UsersProfilePage;
 
-BookingStatusPage.getLayout = function getLayout(page: React.ReactElement) {
+UsersProfilePage.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <RootLayout>
-      <DashboardLayout>{page}</DashboardLayout>
+      <AdminDashboardLayout>{page}</AdminDashboardLayout>
     </RootLayout>
   );
 };

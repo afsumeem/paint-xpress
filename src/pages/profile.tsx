@@ -11,8 +11,9 @@ import userImg from "../assests/images/user.png";
 import Image from "next/image";
 import usePrivateRoute from "@/privateRoute/layout";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { useAppSelector } from "@/redux/hook";
 import Table, { ColumnsType } from "antd/es/table";
+import { IServices } from "@/types/global";
 
 //
 
@@ -33,10 +34,15 @@ interface DataType {
   category: string;
   rating: number;
 }
+//
+
+interface DataType extends IServices {}
+
+//
 
 const Profile = () => {
   const { services } = useAppSelector((state) => state.bookingList);
-  const dispatch = useAppDispatch();
+
   const [signOut] = useSignOut(auth);
   const {
     register,
@@ -58,7 +64,7 @@ const Profile = () => {
   };
 
   //
-  const columns: ColumnsType<DataType> = [
+  const columns: ColumnsType<IServices> = [
     {
       title: "Title",
       dataIndex: "title",
