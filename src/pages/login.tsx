@@ -1,7 +1,5 @@
-import { GoogleOutlined, GithubOutlined } from "@ant-design/icons";
 import Head from "next/head";
 import styles from "@/styles/Login.module.css";
-import { signIn } from "next-auth/react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import auth from "@/firebase/firebase.auth";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -110,25 +108,7 @@ const LoginPage = () => {
               <span className="underline text-blue-800">SignUp</span>
             </h4>
           </Link>
-          {/* <div className={styles.icons}>
-            <GithubOutlined
-              onClick={() =>
-                signIn("github", {
-                  callbackUrl: "http://localhost:3000/profile/",
-                })
-              }
-            />
 
-            <GoogleOutlined
-              onClick={() =>
-                signIn("google", {
-                  callbackUrl: "http://localhost:3000/profile/",
-                })
-              }
-            />
-          </div> */}
-
-          {/*  */}
           <h4 className="text-center  ">
             Back to{" "}
             <Link href="/">

@@ -10,7 +10,7 @@ import type { MenuProps } from "antd";
 import { Layout, Menu, theme } from "antd";
 import Link from "next/link";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -44,7 +44,7 @@ const items: MenuItem[] = [
     getItem(<Link href="/#feedback">Feedback us</Link>, "9"),
     getItem(<Link href="/services">Service</Link>, "10"),
   ]),
-  getItem(<Link href="editprofile">Edit Profile</Link>, "3", <EditOutlined />),
+  getItem(<Link href="/editprofile">Edit Profile</Link>, "3", <EditOutlined />),
 ];
 
 const DashboardLayout = ({ children }: any) => {
@@ -54,7 +54,7 @@ const DashboardLayout = ({ children }: any) => {
   } = theme.useToken();
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: "100vh", marginTop: "30px" }}>
       <Sider
         collapsible
         collapsed={collapsed}
@@ -77,6 +77,7 @@ const DashboardLayout = ({ children }: any) => {
               background: colorBgContainer,
             }}
           >
+            <hr />
             {children}
           </div>
         </Content>

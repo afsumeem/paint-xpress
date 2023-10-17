@@ -1,6 +1,6 @@
-import { Alert, Button, Menu, Spin } from "antd";
+import { Menu, Spin, message } from "antd";
 import Link from "next/link";
-import { BarsOutlined } from "@ant-design/icons";
+import { BarsOutlined, UserOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import BookingList from "../UI/BookingList";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
@@ -16,8 +16,9 @@ const Navbar: React.FC = () => {
   if (loading) {
     return <Spin size="large" />;
   }
+
   return (
-    <div className="flex items-center justify-between w-full text-lg  px-10">
+    <div className="flex items-center justify-between w-full text-lg  px-10 py-2">
       <Link href="/">
         <h2 className="text-sky-500 text-2xl ">
           <span className="text-5xl text-sky-600 font-bold font-mono">P</span>
@@ -48,57 +49,62 @@ const Navbar: React.FC = () => {
               <button className="navLink ">Our Team</button>
             </Link>
 
-            {user?.email && (
-              <>
-                <button
-                  className="navLink"
-                  onClick={async () => {
-                    const success = await signOut();
-                    if (success) {
-                      // alert("You are sign out");
-                      <Alert
-                        message="Info Text"
-                        description="Info Description Info Description Info Description Info Description"
-                        type="info"
-                        action={
-                          <Space direction="vertical">
-                            <Button size="small" type="primary">
-                              Accept
-                            </Button>
-                            <Button size="small" danger ghost>
-                              Decline
-                            </Button>
-                          </Space>
-                        }
-                        closable
-                      />;
-                    }
-                  }}
-                >
-                  Logout
-                </button>
-                <Link href="/userprofile">
-                  {" "}
-                  <button className="navLink ">Dashboard</button>
-                </Link>
-              </>
-            )}
+            <Dropdown
+              // menu={{ items }}
+              trigger={["click"]}
+              className="cursor-pointer mx-2"
+              dropdownRender={() => (
+                <div className="p-4 flex flex-col bg-sky-200 gap-2  shadow-inner">
+                  {user?.email ? (
+                    <>
+                      {" "}
+                      <h2 className="text-lg">{user?.email}</h2> <hr />
+                    </>
+                  ) : (
+                    <>
+                      <Link href="/login">
+                        <button className="navLink ">Login</button>
+                      </Link>
+                      <Link href="/signup">
+                        <button className="navLink">SignUp</button>
+                      </Link>
+                    </>
+                  )}
+                  {user?.email && (
+                    <>
+                      <Link href="/profile">
+                        <button className="navLink ">Profile</button>
+                      </Link>
+                      <Link href="/userprofile">
+                        {" "}
+                        <button className="navLink ">Dashboard</button>
+                      </Link>
+                      <div>
+                        <button
+                          className="navLink "
+                          onClick={async () => {
+                            const success = await signOut();
+                            if (success) {
+                              message.success("You are logged out");
+                            }
+                          }}
+                        >
+                          Logout
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+            >
+              <a onClick={(e) => e.preventDefault()} className="text-xl mt-4">
+                <Space>
+                  <UserOutlined />
+                </Space>
+              </a>
+            </Dropdown>
 
-            {user?.email ? (
-              <div className="flex items-center justify-center">
-                <h2 className="text-xl">{user?.email}</h2>
-              </div>
-            ) : (
-              <>
-                <Link href="/login">
-                  <button className="navLink ">Login</button>
-                </Link>
-
-                <Link href="/signup">
-                  <button className="navLink">SignUp</button>
-                </Link>
-              </>
-            )}
+            {/*  */}
           </Menu>
         </div>
 
@@ -114,6 +120,14 @@ const Navbar: React.FC = () => {
           className="cursor-pointer lg:invisible mx-2"
           dropdownRender={() => (
             <div className="flex flex-col bg-white gap-2 border border-blue-900 shadow-inner">
+              {user?.email && (
+                <Link href="/profile">
+                  {" "}
+                  <button className="w-full hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base  hover:text-black py-2 ">
+                    Profile
+                  </button>
+                </Link>
+              )}
               <Link href="/">
                 {" "}
                 <button className="w-full hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base  hover:text-black py-2 ">
@@ -154,7 +168,7 @@ const Navbar: React.FC = () => {
                     onClick={async () => {
                       const success = await signOut();
                       if (success) {
-                        alert("You are sign out");
+                        message.success("You are logged out");
                       }
                     }}
                   >
