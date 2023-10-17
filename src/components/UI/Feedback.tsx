@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, InputNumber, Row, Slider, message } from "antd";
+import { InputNumber, Slider, message } from "antd";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type FormValues = {

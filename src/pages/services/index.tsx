@@ -3,12 +3,13 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import { useGetServicesQuery } from "@/redux/features/services/serviceApi";
 import { IServices } from "@/types/global";
-import { Breadcrumb, Col, Pagination, Row, Spin, message } from "antd";
+import { Breadcrumb, Col, Pagination, Row, Slider, Spin, message } from "antd";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { addToBookingList } from "@/redux/features/services/serviceSlice";
 import { HomeOutlined } from "@ant-design/icons";
+import { setPriceRange } from "@/redux/features/service/servicesSlice";
 
 //
 
@@ -23,10 +24,8 @@ const ServicePage = ({ categories }: IProps) => {
   const [selectCategory, setSelectCategory] = useState("");
   const [searchText, setSearchText] = useState("");
 
-  // const { data, isLoading } = useGetServicesQuery({
-  //   search: searchText,
-  //   category: selectCategory,
-  // });
+  //sort by pricerange
+  const { price } = useAppSelector((state) => state.services);
 
   const dispatch = useAppDispatch();
 
@@ -57,45 +56,27 @@ const ServicePage = ({ categories }: IProps) => {
 
   const displayServices = data?.slice(startIndex, endIndex);
 
-  //
-
-  const [buttonClicked, setButtonClicked] = useState(false);
-
-  const selectedService = useAppSelector((state) => state.bookingList.services);
-
   const handleAddToBookingList = (service: IServices) => {
-    // if (!buttonClicked) {
     dispatch(addToBookingList(service));
     message.success("Service booked");
-    // setButtonClicked(true);
-    // } else {
-    //   message.warning("Service already booked");
-    // }
   };
+
+  const onChange = (newValue: number[]) => {
+    if (newValue !== null) {
+      dispatch(setPriceRange(newValue[0]));
+    }
+  };
+  let productsData;
+  if (price > 0) {
+    productsData = data?.filter(
+      (item: { price: number }) => item.price < price
+    );
+  } else {
+    productsData = data;
+  }
 
   return (
     <div className="mx-10 mt-10">
-      <Breadcrumb
-        style={{ marginBottom: "25px" }}
-        items={[
-          {
-            href: "/",
-            title: (
-              <>
-                <HomeOutlined />
-                <span>Home</span>
-              </>
-            ),
-          },
-          {
-            title: (
-              <>
-                <span>Services</span>
-              </>
-            ),
-          },
-        ]}
-      />
       <div className="mb-10 section-title">
         <h4 className="font-bold text-md text-sky-400 uppercase ">
           Our Services
@@ -108,20 +89,34 @@ const ServicePage = ({ categories }: IProps) => {
 
       <Row gutter={20}>
         <Col sm={24} md={6} lg={6}>
-          <form className=" my-2">
-            <label htmlFor="" className="font-semibold text-lg">
-              {" "}
-              Search Services
-            </label>
-            <input
-              type="text"
-              onChange={(e) => setSearchText(e.target.value)}
-              className=" w-full py-2 border rounded-md border-black px-2"
-              placeholder="Search Services"
-            />
-          </form>
+          <hr />
+          <div className="my-4">
+            <h1 className="text-lg uppercase font-semibold mb-4">
+              Price Range
+            </h1>
+            <div className="max-w-xl border p-2">
+              <div className="font-semibold">
+                <h2>$0 To {price}</h2>
+              </div>
+              <Slider
+                range
+                defaultValue={[2200]}
+                min={0}
+                max={2200}
+                onChange={(value) => onChange(value)}
+              />
+            </div>
+          </div>
           <hr />
           <h2 className="my-4 font-semibold text-lg">Select a Category</h2>
+          <button
+            onClick={() => {
+              setSelectCategory("");
+            }}
+            className=" w-full rounded-none text-white py-2 mb-4  bg-sky-700 hover:bg-sky-950 transition duration-1000"
+          >
+            Reset category
+          </button>
           {categories?.map((category, i) => (
             <div key={i}>
               <input
@@ -137,17 +132,41 @@ const ServicePage = ({ categories }: IProps) => {
               </label>
             </div>
           ))}
-          <button
-            onClick={() => {
-              setSelectCategory("");
-            }}
-            className=" mt-4 w-full rounded-none text-blue-950 hover:text-white py-2   bg-sky-400 hover:bg-sky-950 transition duration-1000"
-          >
-            Reset category
-          </button>
         </Col>
         <Col sm={24} md={18} lg={18}>
-          {data?.length === 0 ? (
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <Breadcrumb
+              style={{ marginBottom: "25px" }}
+              items={[
+                {
+                  href: "/",
+                  title: (
+                    <>
+                      <HomeOutlined />
+                      <span>Home</span>
+                    </>
+                  ),
+                },
+                {
+                  title: (
+                    <>
+                      <span>Services</span>
+                    </>
+                  ),
+                },
+              ]}
+            />
+            <form className=" my-2">
+              <input
+                type="text"
+                onChange={(e) => setSearchText(e.target.value)}
+                className=" py-2 border rounded-md border-black px-2"
+                placeholder="Search Services"
+                style={{ width: "250px" }}
+              />
+            </form>
+          </div>
+          {productsData?.length === 0 ? (
             <h2 className="font-mono text-4xl text-center mt-40 text-red-500">
               Data not found!!
             </h2>
@@ -209,7 +228,6 @@ const ServicePage = ({ categories }: IProps) => {
                           <button
                             className="w-full bg-sky-200 font-bold hover:bg-sky-400 transition duration-700 uppercase py-2 rounded-md"
                             onClick={() => handleAddToBookingList(service)}
-                            // disabled={buttonClicked}
                           >
                             book now
                           </button>

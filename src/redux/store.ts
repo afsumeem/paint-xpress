@@ -1,13 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { api } from "./api/apiSlice";
 import bookingListReducer from "./features/services/serviceSlice";
+import servicesReducer from "./features/service/servicesSlice";
 
 const store = configureStore({
   // reducer
 
   reducer: {
     bookingList: bookingListReducer,
-
+    services: servicesReducer,
     [api.reducerPath]: api.reducer,
   },
 
