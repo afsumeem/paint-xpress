@@ -8,7 +8,6 @@ const projectApi = api.injectEndpoints({
       query: ({ search, category }) => ({
         url: "/filteredProjects",
         params: { search, category },
-        // providesTags: ["addBook", "deleteBook"],
       }),
     }),
   }),

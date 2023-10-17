@@ -68,30 +68,24 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
 //fetch paints categories
 export const getStaticProps: GetStaticProps<IProps> = async () => {
   //fetch services
-  const result = await fetch(
-    "https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/services"
-  );
+  const result = await fetch("https://paintxpress-server.vercel.app/services");
   const services = await result.json();
   const randomServices = services.slice(0, 8);
 
   //fetch categories
-  const res = await fetch(
-    "https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/categories"
-  );
+  const res = await fetch("https://paintxpress-server.vercel.app/categories");
   const categories = await res.json();
 
   //fetch latest projects
   const response = await fetch(
-    "https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/projects"
+    "https://paintxpress-server.vercel.app/projects"
   );
   const projects = await response.json();
   const randomProjects = projects.slice(0, 6);
 
   //customer reviews
 
-  const reviews = await fetch(
-    "https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/reviews"
-  );
+  const reviews = await fetch("https://paintxpress-server.vercel.app/reviews");
   const customerReviews = await reviews.json();
 
   return {

@@ -23,25 +23,9 @@ interface IProps {
 const SingleService = ({ service, projects }: IProps) => {
   const dispatch = useAppDispatch();
 
-  const [buttonClicked, setButtonClicked] = useState(false);
-
-  // const handleAddToBookingList = (service: IServices) => {
-  //   dispatch(addToBookingList(service));
-  //   message.success("Service booked");
-  // };
-
-  const selectedService = useAppSelector((state) => state.bookingList.services);
-
-  //
-
   const handleAddToBookingList = (service: IServices) => {
-    // if (!buttonClicked) {
     dispatch(addToBookingList(service));
     message.success("Service booked");
-    // setButtonClicked(true);
-    // } else {
-    //   message.warning("Service already booked");
-    // }
   };
 
   return (
@@ -221,9 +205,7 @@ SingleService.getLayout = function getLayout(page: React.ReactElement) {
 //
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch(
-    "https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/services"
-  );
+  const res = await fetch("https://paintxpress-server.vercel.app/services");
   const services = await res.json();
 
   const paths = services?.map((service: IServices) => ({
@@ -238,13 +220,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
 
   const res = await fetch(
-    `https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/services/${params?.id}`
+    `https://paintxpress-server.vercel.app/services/${params?.id}`
   );
   const service = await res.json();
 
   //projects
   const response = await fetch(
-    "https://paintxpress-server-l7vbcoszr-afsumeem.vercel.app/projects"
+    "https://paintxpress-server.vercel.app/projects"
   );
   const projects = await response.json();
   //   const singleProject = projects.map((project: IProjects) => project);

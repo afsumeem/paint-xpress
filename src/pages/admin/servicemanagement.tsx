@@ -1,7 +1,7 @@
 import React from "react";
 
-const servicemanagement = () => {
+const Servicemanagement = () => {
   return <div></div>;
 };
 
-export default servicemanagement;
+export default Servicemanagement;

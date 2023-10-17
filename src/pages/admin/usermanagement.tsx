@@ -71,7 +71,7 @@ UserManagementPage.getLayout = function getLayout(page: React.ReactElement) {
 };
 
 export const getStaticProps: GetStaticProps<IProps> = async () => {
-  const res = await fetch("http://localhost:5000/users");
+  const res = await fetch("https://paintxpress-server.vercel.app/users");
   const users = await res.json();
 
   return {
