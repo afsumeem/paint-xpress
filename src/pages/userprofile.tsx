@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-
+import DashboardLayout from "@/components/Layouts/Dashboard";
 import RootLayout from "@/components/Layouts/RootLayout";
 import auth from "@/firebase/firebase.auth";
 import { Breadcrumb, Spin, message } from "antd";
@@ -13,7 +13,7 @@ import usePrivateRoute from "@/privateRoute/layout";
 
 //
 
-const Profile = () => {
+const UserProfilePage = () => {
   const [signOut, error] = useSignOut(auth);
   const { data: session } = useSession();
 
@@ -89,8 +89,12 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default UserProfilePage;
 
-Profile.getLayout = function getLayout(page: React.ReactElement) {
-  return <RootLayout>{page}</RootLayout>;
+UserProfilePage.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <RootLayout>
+      <DashboardLayout>{page}</DashboardLayout>
+    </RootLayout>
+  );
 };

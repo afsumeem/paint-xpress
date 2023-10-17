@@ -29,7 +29,7 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem(<Link href="/profile">User Profile</Link>, "", <UserOutlined />),
+  getItem(<Link href="/userprofile">User Profile</Link>, "", <UserOutlined />),
   getItem(
     <Link href="/bookinghistory">Booking History</Link>,
     "2",

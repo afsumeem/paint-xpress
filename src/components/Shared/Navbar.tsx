@@ -1,19 +1,15 @@
-import { Menu, Spin } from "antd";
+import { Alert, Button, Menu, Spin } from "antd";
 import Link from "next/link";
 import { BarsOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import BookingList from "../UI/BookingList";
-import { useSession, signOut as signout } from "next-auth/react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import auth from "@/firebase/firebase.auth";
-import logoImg from "@/assests/images/logo.JPG";
-import Image from "next/image";
 
 //
 
 const Navbar: React.FC = () => {
   const [signOut, loading, error] = useSignOut(auth);
-  const { data: session } = useSession();
 
   const [user] = useAuthState(auth);
 
@@ -21,15 +17,12 @@ const Navbar: React.FC = () => {
     return <Spin size="large" />;
   }
   return (
-    <div className="flex items-center justify-between w-full text-lg my-0">
+    <div className="flex items-center justify-between w-full text-lg  px-10">
       <Link href="/">
-        <Image
-          src={logoImg}
-          alt="paint service logo"
-          height={100}
-          width={200}
-          className="my-2"
-        />
+        <h2 className="text-sky-500 text-2xl ">
+          <span className="text-5xl text-sky-600 font-bold font-mono">P</span>
+          aintxpress
+        </h2>
       </Link>
 
       <div className="flex items-center justify-center">
@@ -55,23 +48,6 @@ const Navbar: React.FC = () => {
               <button className="navLink ">Our Team</button>
             </Link>
 
-            {/*  */}
-            {session?.user && (
-              <>
-                <button
-                  className="navLink "
-                  style={{ backgroundColor: "skyblue" }}
-                  onClick={() => signout()}
-                >
-                  LogOut
-                </button>
-                <Link href="/profile">
-                  {" "}
-                  <button className="navLink ">Dashboard</button>
-                </Link>
-              </>
-            )}
-
             {user?.email && (
               <>
                 <button
@@ -79,24 +55,38 @@ const Navbar: React.FC = () => {
                   onClick={async () => {
                     const success = await signOut();
                     if (success) {
-                      alert("You are sign out");
+                      // alert("You are sign out");
+                      <Alert
+                        message="Info Text"
+                        description="Info Description Info Description Info Description Info Description"
+                        type="info"
+                        action={
+                          <Space direction="vertical">
+                            <Button size="small" type="primary">
+                              Accept
+                            </Button>
+                            <Button size="small" danger ghost>
+                              Decline
+                            </Button>
+                          </Space>
+                        }
+                        closable
+                      />;
                     }
                   }}
                 >
                   Logout
                 </button>
-                <Link href="/profile">
+                <Link href="/userprofile">
                   {" "}
                   <button className="navLink ">Dashboard</button>
                 </Link>
               </>
             )}
 
-            {session?.user || user?.email ? (
+            {user?.email ? (
               <div className="flex items-center justify-center">
-                <h2 className="text-xl">
-                  {session?.user?.name || user?.email}
-                </h2>
+                <h2 className="text-xl">{user?.email}</h2>
               </div>
             ) : (
               <>
@@ -121,9 +111,9 @@ const Navbar: React.FC = () => {
         <Dropdown
           // menu={{ items }}
           trigger={["click"]}
-          className="cursor-pointer lg:invisible "
+          className="cursor-pointer lg:invisible mx-2"
           dropdownRender={() => (
-            <div className="flex flex-col bg-white py-6  gap-2 border border-blue-900 shadow-inner">
+            <div className="flex flex-col bg-white gap-2 border border-blue-900 shadow-inner">
               <Link href="/">
                 {" "}
                 <button className="w-full hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base  hover:text-black py-2 ">
@@ -151,34 +141,9 @@ const Navbar: React.FC = () => {
                 </button>
               </Link>
 
-              {/* {session?.user ? (
-                <Button onClick={() => signOut()}>LogOut</Button>
-              ) : (
-                <>
-                  <Link href="/login">Login</Link>
-                  <Link href="/signup">SignUp</Link>
-                </>
-              )} */}
-
-              {session?.user && (
-                <>
-                  <Link href="/profile">
-                    {" "}
-                    <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
-                      Dashboard
-                    </button>
-                  </Link>
-                  <button
-                    className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 "
-                    onClick={() => signout()}
-                  >
-                    LogOut
-                  </button>
-                </>
-              )}
               {user?.email && (
                 <>
-                  <Link href="/profile">
+                  <Link href="/userprofile">
                     {" "}
                     <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
                       Dashboard
@@ -197,11 +162,9 @@ const Navbar: React.FC = () => {
                   </button>
                 </>
               )}
-              {session?.user || user?.email ? (
+              {user?.email ? (
                 <>
-                  <h2 className="text-xl text-center">
-                    {session?.user?.name || user?.email}
-                  </h2>
+                  <h2 className="text-xl text-center">{user?.email}</h2>
                 </>
               ) : (
                 <>
@@ -221,7 +184,7 @@ const Navbar: React.FC = () => {
             </div>
           )}
         >
-          <a onClick={(e) => e.preventDefault()} className="mr-6 text-2xl">
+          <a onClick={(e) => e.preventDefault()} className="text-2xl">
             <Space>
               <BarsOutlined />
             </Space>
