@@ -2,8 +2,8 @@
 
 ## PaintXpress live link
 
-- [PaintXpress](https://tech-valley-next-js.vercel.app/)
-- https://tech-valley-next-js.vercel.app/
+- [PaintXpress](https://paintxpress-b7z5da2pe-afsumeem.vercel.app/)
+- https://paintxpress-b7z5da2pe-afsumeem.vercel.app/
 
 ## Github Repo (Frontend)
 
