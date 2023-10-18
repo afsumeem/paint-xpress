@@ -4,11 +4,11 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "@/firebase/firebase.auth";
 import { Alert, Spin, message } from "antd";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
 import { usePostUsersMutation } from "@/redux/features/users/usersApi";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 //
 interface IFormInput {

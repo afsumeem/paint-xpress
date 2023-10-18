@@ -2,7 +2,7 @@
 
 import RootLayout from "@/components/Layouts/RootLayout";
 import auth from "@/firebase/firebase.auth";
-import { Breadcrumb, Col, Row, Space, Spin, message } from "antd";
+import { Breadcrumb, Col, Row, Space, Spin, message, Table } from "antd";
 import Head from "next/head";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { HomeOutlined } from "@ant-design/icons";
@@ -12,7 +12,7 @@ import Image from "next/image";
 import usePrivateRoute from "@/privateRoute/layout";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppSelector } from "@/redux/hook";
-import Table, { ColumnsType } from "antd/es/table";
+import type { ColumnsType } from "antd/es/table";
 import { IServices } from "@/types/global";
 
 //
