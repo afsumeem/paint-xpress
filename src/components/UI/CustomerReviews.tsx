@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ICustomerReviews } from "@/types/global";
 import Slider from "react-slick";
+//@ts-ignore
 import ReactStars from "react-rating-stars-component";
 
 interface IProps {

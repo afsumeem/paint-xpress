@@ -2,10 +2,11 @@
 
 import AdminDashboardLayout from "@/components/Layouts/AdminDashboard";
 import RootLayout from "@/components/Layouts/RootLayout";
+import usePrivateRoute from "@/privateRoute/layout";
 import { useGetUsersQuery } from "@/redux/features/users/usersApi";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { IServices, IUsers } from "@/types/global";
-import { Space, Table, message } from "antd";
+import { Space, Spin, Table, message } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { GetStaticProps } from "next";
 
@@ -17,11 +18,17 @@ interface IProps {
 const ServiceManagement = ({ services }: IProps) => {
   const handleDeleteItem = (id: any) => {
     const filteredService = services.filter((service) => service._id !== id);
-    console.log(filteredService);
+
     message.success("item deleted");
   };
 
-  console.log(services);
+  //
+  const loading = usePrivateRoute();
+
+  if (loading) {
+    return <Spin size="large" />;
+  }
+
   interface DataType {
     key: string;
     title: string;

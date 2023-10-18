@@ -2,10 +2,9 @@
 
 import AdminDashboardLayout from "@/components/Layouts/AdminDashboard";
 import RootLayout from "@/components/Layouts/RootLayout";
-
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import usePrivateRoute from "@/privateRoute/layout";
 import { IUsers } from "@/types/global";
-import { Space, Table, message } from "antd";
+import { Space, Spin, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { GetStaticProps } from "next";
 
@@ -18,6 +17,13 @@ const UserManagementPage = ({ users }: IProps) => {
   interface DataType {
     key: string;
     email: string;
+  }
+
+  //
+  const loading = usePrivateRoute();
+
+  if (loading) {
+    return <Spin size="large" />;
   }
 
   interface DataType extends IUsers {}
