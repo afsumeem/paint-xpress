@@ -2,6 +2,7 @@
 
 import AdminDashboardLayout from "@/components/Layouts/AdminDashboard";
 import RootLayout from "@/components/Layouts/RootLayout";
+
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { IUsers } from "@/types/global";
 import { Space, Table, message } from "antd";
@@ -14,31 +15,26 @@ interface IProps {
 
 //
 const UserManagementPage = ({ users }: IProps) => {
-  // const { services } = useAppSelector((state) => state.bookingList);
-
-  const dispatch = useAppDispatch();
-
   interface DataType {
     key: string;
     email: string;
   }
 
-  //
   interface DataType extends IUsers {}
 
   const columns: ColumnsType<IUsers> = [
     {
-      title: "Title",
-      dataIndex: "title",
-      key: "title",
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
     },
 
     {
-      title: "Status",
-      key: "status",
+      title: "Action",
+      key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <a style={{ color: "green" }}>Pending</a>
+          <a style={{ color: "green" }}>Delete</a>
         </Space>
       ),
     },
@@ -46,11 +42,11 @@ const UserManagementPage = ({ users }: IProps) => {
   return (
     <div>
       {users.length === 0 ? (
-        <h2 className="text-red-500 text-xl">Your cart is currently empty.</h2>
+        <h2 className="text-red-500 text-xl">No users</h2>
       ) : (
         <>
           <div>
-            <h3 className="text-3xl text-center mb-6">Booking History</h3>
+            <h3 className="text-3xl text-center mb-6">Registered Users</h3>
             <hr className="mb-4" />
           </div>
           <Table columns={columns} dataSource={users} />

@@ -134,12 +134,18 @@ const Profile = () => {
                     </button>
                   </>
                 )}
+                <button className="navLink">
+                  <Link href="/admin/usermanagement">Admin Dashboard </Link>
+                </button>
               </div>
             </div>
           </Col>
           <Col xs={24} sm={24} md={16} lg={18}>
             <Breadcrumb
-              style={{ marginBottom: "25px" }}
+              style={{
+                marginBottom: "25px",
+                paddingLeft: "100px",
+              }}
               items={[
                 {
                   href: "/",
@@ -233,7 +239,7 @@ const Profile = () => {
             </div>
             <div>
               {services.length === 0 ? (
-                <h2 className="text-red-500 text-xl">
+                <h2 className="text-red-500 text-xl text-center">
                   <Link href="/services">Booking Services</Link>
                 </h2>
               ) : (

@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "antd";
 import Image from "next/image";
-import img1 from "../../assests/images/about.jpg";
+import img1 from "../../assests/images/hero.jpg";
 import Link from "next/link";
 
 const HeroSection: React.FC = () => {
@@ -23,8 +23,8 @@ const HeroSection: React.FC = () => {
           }}
         />
         <div className="banner-content text-center">
-          <h5 className="text-2xl text-sky-100">Best in country</h5>
-          <h2 className="text-4xl uppercase font-bold my-8 text-white">
+          <h5 className="text-xl md:text-2xl text-sky-100">Best in country</h5>
+          <h2 className="text-2xl md:text-4xl uppercase font-bold my-8 text-white">
             Bring Your Home To Lively colors. Cost effective commercial service
           </h2>
 
