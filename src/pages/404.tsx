@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
-import errorImg from "../assests/images/404_page_cover.jpg";
+import errorImg from "@/assests/images/404_page_cover.jpg";
 
 const NotFoundPage = () => {
   const router = useRouter();

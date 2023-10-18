@@ -1,5 +1,5 @@
 import Image from "next/image";
-import aboutImg from "../../assests/images/about.jpg";
+import aboutImg from "@/assests/images/about.jpg";
 import AOS from "aos";
 import { useEffect } from "react";
 import Link from "next/link";

@@ -15,15 +15,8 @@
 - [server side Link](https://github.com/afsumeem/paintXpress-backend)
 - https://github.com/afsumeem/paintXpress-backend
 
-### Instructions
+- Dynamic Filtering Tools Refine the options based on service categories, Price range. Watch as the webpage dynamically updates, displaying only the services that match the criteria.
 
-- At first clone or download the repo then run npm install for install the dependencies.
-- After installing the dependencies run - npm run dev to run the project.
-
-### Features
-
--
--
-- Ensure the website is fully responsive, providing a seamless experience across various devices and screen sizes.
+- Mobile-First Responsiveness: Experience the beauty of responsive design across all devices. Our website, meticulously crafted with a mobile-first approach, ensures a seamless experience on smartphones, tablets, and desktops alike.
 
 - Redirect unauthenticated users to the login page.

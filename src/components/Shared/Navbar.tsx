@@ -2,7 +2,7 @@ import { Menu, Spin, message } from "antd";
 import Link from "next/link";
 import { BarsOutlined, UserOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
-import BookingList from "../UI/BookingList";
+import BookingList from "@/components/UI/BookingList";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import auth from "@/firebase/firebase.auth";
 

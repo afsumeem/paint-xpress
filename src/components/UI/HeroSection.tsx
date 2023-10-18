@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "antd";
 import Image from "next/image";
-import img1 from "../../assests/images/hero.jpg";
+import img1 from "@/assests/images/hero.jpg";
 import Link from "next/link";
 
 const HeroSection: React.FC = () => {

@@ -7,7 +7,7 @@ import Head from "next/head";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { useSession, signOut as signout } from "next-auth/react";
 import Link from "next/link";
-import userImg from "../assests/images/user.png";
+import userImg from "@/assests/images/user.png";
 import Image from "next/image";
 import usePrivateRoute from "@/privateRoute/layout";
 
