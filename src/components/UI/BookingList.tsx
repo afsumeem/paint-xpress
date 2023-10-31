@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
-import { Badge, Button, Drawer } from "antd";
+import { Badge, Button, Drawer, Tooltip } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { removeFromBookingList } from "@/redux/features/services/serviceSlice";
@@ -22,10 +22,11 @@ const BookingList: React.FC = () => {
     <>
       <Badge count={services.length} size="small">
         <ShoppingCartOutlined
+          style={{ color: "var(--blue)" }}
           shape="square"
           sizes="large"
           onClick={showDrawer}
-          className="text-blue-900 text-2xl "
+          className=" text-2xl "
         />
       </Badge>
 
@@ -42,7 +43,7 @@ const BookingList: React.FC = () => {
         ) : (
           <>
             <div className="my-4">
-              <h2 className="text-xl">Total Price: {total}</h2>
+              <h2 className="text-base">Total Price: {total}</h2>
             </div>
             {services.map((service, i) => (
               <div key={i} className="border p-4 m-2">
@@ -53,21 +54,25 @@ const BookingList: React.FC = () => {
                     alt=""
                   />
                   <div>
-                    <h2 className="text-base font-semibold my-2 uppercase">
+                    <h2
+                      className="font-semibold my-2 uppercase"
+                      style={{ color: "var(--blue)" }}
+                    >
                       {service.title}
                     </h2>
+
                     <h6>{service.category}</h6>
                     <h1 className="text-xl my-2">$ {service.price}</h1>
+                    <Tooltip title="Cancel booking" color={"red"} key={"red"}>
+                      <button
+                        className="text-red-500 text-base px-4 py-2 border"
+                        onClick={() => dispatch(removeFromBookingList(service))}
+                      >
+                        X
+                      </button>
+                    </Tooltip>
                   </div>
                 </div>
-
-                <Button
-                  className="w-full"
-                  danger
-                  onClick={() => dispatch(removeFromBookingList(service))}
-                >
-                  Cancel booking
-                </Button>
               </div>
             ))}
           </>

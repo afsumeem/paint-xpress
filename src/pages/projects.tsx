@@ -59,10 +59,16 @@ const Projects = ({ categories }: IProps) => {
         ]}
       />
       <div className="mb-10 section-title">
-        <h4 className="font-bold text-md text-sky-400 uppercase ">
+        <h4
+          className="font-bold uppercase"
+          style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+        >
           Latest Projects
         </h4>
-        <h2 className="text-2xl font-semibold uppercase font-mono">
+        <h2
+          className="text-2xl font-semibold uppercase font-mono"
+          style={{ fontSize: "var(--titleFont)" }}
+        >
           Inspiration on Your Next Project
         </h2>
         <hr />
@@ -72,7 +78,11 @@ const Projects = ({ categories }: IProps) => {
       <Row gutter={20}>
         <Col sm={24} md={6} lg={6}>
           <form className=" my-2">
-            <label htmlFor="" className="font-semibold text-lg">
+            <label
+              htmlFor=""
+              className="font-semibold"
+              style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+            >
               {" "}
               Search Project
             </label>
@@ -84,7 +94,12 @@ const Projects = ({ categories }: IProps) => {
             />
           </form>
           <hr />
-          <h2 className="my-4 font-semibold text-lg">Select a Category</h2>
+          <h2
+            className="my-4 font-semibold"
+            style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+          >
+            Select a Category
+          </h2>
           {categories?.map((category, i) => (
             <div key={i}>
               <input
@@ -104,7 +119,8 @@ const Projects = ({ categories }: IProps) => {
             onClick={() => {
               setSelectCategory("");
             }}
-            className=" mt-4 w-full rounded-none text-blue-950 hover:text-white py-2   bg-sky-400 hover:bg-sky-950 transition duration-1000"
+            className=" mt-4 w-full rounded-none text-white  py-2 transition duration-1000"
+            style={{ backgroundColor: "var(--blue)" }}
           >
             Reset category
           </button>
@@ -146,7 +162,10 @@ const Projects = ({ categories }: IProps) => {
                             />
                           </Link>
                           <div className="project-tag">
-                            <p className="bg-sky-600 p-2 m-2 font-semibold text-white uppercase ">
+                            <p
+                              className=" p-2 m-2 font-semibold text-white uppercase"
+                              style={{ backgroundColor: "var(--blue)" }}
+                            >
                               {project.category}
                             </p>
                           </div>

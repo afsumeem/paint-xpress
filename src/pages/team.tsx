@@ -19,10 +19,16 @@ const OurTeam = ({ teams }: IProps) => {
   return (
     <div className="mt-10 ">
       <div className="mb-10 section-title mx-10">
-        <h4 className="font-bold text-md text-sky-400 uppercase ">
+        <h4
+          className="font-bold uppercase"
+          style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+        >
           Expert Team
         </h4>
-        <h2 className="text-2xl font-semibold uppercase font-mono mb-6">
+        <h2
+          className="font-semibold uppercase font-mono mb-6"
+          style={{ fontSize: "var(--titleFont)" }}
+        >
           Trained PaintXpress Team
         </h2>
         <hr />

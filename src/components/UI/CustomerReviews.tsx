@@ -27,8 +27,16 @@ const CustomerReviews = ({ reviews }: IProps) => {
   return (
     <div className=" pt-20 pb-10 px-10">
       <div className="mb-10 section-title">
-        <h4 className="font-bold text-2xl text-sky-400 uppercase ">Reviews</h4>
-        <h2 className="text-4xl font-mono font-semibold uppercase">
+        <h4
+          className="font-bold uppercase"
+          style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+        >
+          Reviews
+        </h4>
+        <h2
+          className="font-mono font-semibold uppercase"
+          style={{ fontSize: "var(--titleFont)" }}
+        >
           What our Customer Says
         </h2>
       </div>
@@ -38,7 +46,10 @@ const CustomerReviews = ({ reviews }: IProps) => {
             <div key={i} className="border border-dashed p-10 bg-slate-50">
               <div className="flex flex-col items-center justify-center hover:cursor-pointer">
                 <img className="item h-20 w-20" src={review?.img} alt="img" />
-                <h2 className="text-xl uppercase mt-4 text-red-500 font-bold">
+                <h2
+                  className="uppercase mt-4 font-bold"
+                  style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+                >
                   {review.name}
                 </h2>
                 <h2 className="font-mono text-md">{review.designation}</h2>

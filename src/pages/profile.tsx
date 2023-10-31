@@ -167,61 +167,70 @@ const Profile = () => {
             />
 
             <div className="mt-8">
-              <h2 className="text-center text-2xl font-bold uppercase mb-2">
+              <h2
+                className="text-center font-bold uppercase mb-2"
+                style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+              >
                 Enter Your Payment Details
               </h2>
               <hr />
-              <div className="mt-4 p-6 w-3/4 lg:2/4 block m-auto">
-                <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="mt-4 p-6 block m-auto ">
+                <form
+                  className="w-80 p-6 rounded-md block m-auto"
+                  style={{ backgroundColor: "#e7e7e7a9" }}
+                  onSubmit={handleSubmit(onSubmit)}
+                >
                   <input
                     type="text"
-                    className="w-full py-4 px-2 block m-auto     bg-slate-100 text-black border border-stone-300"
+                    className="w-full h-12 px-2 block m-auto bg-slate-100 text-black border border-stone-300 rounded mb-2"
                     placeholder="Card Number (MM / YY / CVC)"
                     required
                     {...register("cNumber", { required: true })}
                   />
-                  <br />
+
                   <input
-                    className="w-full py-4 px-2 block m-auto   mt-2 bg-slate-100 text-black border border-stone-300"
+                    className="w-full h-12 px-2 block m-auto bg-slate-100 text-black border border-stone-300 rounded mb-2"
                     placeholder="Street Address"
                     type="text"
                     required
                     {...register("street", { required: true })}
                   />
-                  <br />
+
                   <input
-                    className="w-full py-4 px-2 block m-auto   mt-2 bg-slate-100 text-black border border-stone-300"
+                    className="w-full h-12 px-2 block m-auto bg-slate-100 text-black border border-stone-300 rounded mb-2"
                     placeholder="Apt, unit, suite, ect (optional)"
                     type="text"
                     required
                     {...register("apt")}
                   />
-                  <br />
-                  <input
-                    className="w-full py-4 px-2 block m-auto   mt-2 bg-slate-100 text-black border border-stone-300"
-                    placeholder="Country"
-                    type="text"
-                    required
-                    {...register("country", { required: true })}
-                  />
-                  <br />
-                  <div className="flex flx-col md:flex-row gap-2">
+
+                  <div className="flex gap-2">
                     <input
-                      className="w-full py-4 px-2 block m-auto    mt-2 bg-slate-100 text-black border border-stone-300"
+                      className="w-1/2 h-12 px-2 block m-auto bg-slate-100 text-black border border-stone-300 rounded "
+                      placeholder="Country"
+                      type="text"
+                      required
+                      {...register("country", { required: true })}
+                    />
+                    <input
+                      className="w-1/2 h-12 px-2 block m-auto bg-slate-100 text-black border border-stone-300 rounded"
                       placeholder="City"
                       type="text"
                       required
                       {...register("city", { required: true })}
-                    />{" "}
+                    />
+                  </div>
+
+                  <div className="flex gap-2 mt-2">
                     <input
-                      className="w-full py-4 px-2 block m-auto    mt-2 bg-slate-100 text-black border border-stone-300"
+                      className="w-1/2 h-12 px-2 block m-auto bg-slate-100 text-black border border-stone-300 rounded"
                       placeholder="State"
                       type="text"
                       required
                       {...register("state", { required: true })}
                     />{" "}
                     <input
-                      className="w-full py-4 px-2 block m-auto   mt-2 bg-slate-100 text-black border border-stone-300"
+                      className="w-1/2 h-12 px-2 block m-auto bg-slate-100 text-black border border-stone-300 rounded"
                       placeholder="Zip Code"
                       type="text"
                       required
@@ -230,7 +239,8 @@ const Profile = () => {
                   </div>
                   <button
                     type="submit"
-                    className=" w-full mt-4 bg-blue-600 text-white block mx-auto p-2 rounded "
+                    className=" w-full mt-4 text-white block mx-auto p-2 rounded"
+                    style={{ backgroundColor: "var(--blue)" }}
                   >
                     Pay
                   </button>
@@ -239,13 +249,19 @@ const Profile = () => {
             </div>
             <div>
               {services.length === 0 ? (
-                <h2 className="text-red-500 text-xl text-center">
+                <h2
+                  className="text-center"
+                  style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+                >
                   <Link href="/services">Booking Services</Link>
                 </h2>
               ) : (
                 <>
                   <div>
-                    <h3 className="text-3xl text-center mb-6">
+                    <h3
+                      className="text-center mb-6 font-bold"
+                      style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+                    >
                       Booking History
                     </h3>
                     <hr className="mb-4" />

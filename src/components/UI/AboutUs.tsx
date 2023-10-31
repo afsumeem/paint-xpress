@@ -12,10 +12,16 @@ const AboutUs = () => {
   return (
     <div className="px-10 pb-28">
       <div className="mb-10 section-title">
-        <h4 className="font-bold text-2xl text-sky-400 uppercase ">
+        <h4
+          className="font-bold uppercase "
+          style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+        >
           Who we are
         </h4>
-        <h2 className="text-4xl font-mono font-semibold uppercase">
+        <h2
+          style={{ fontSize: "var(--titleFont)" }}
+          className="font-mono font-semibold uppercase"
+        >
           Leading Painting Service Agency
         </h2>
       </div>
@@ -24,28 +30,31 @@ const AboutUs = () => {
         <div
           data-aos="fade-right"
           data-aos-duration="1200"
-          className="min-h-96 w-full lg:w-1/2 border rounded-3xl"
+          className="min-h-96 w-full lg:w-1/2 border rounded"
         >
           <Image
             src={aboutImg}
             alt="about us image"
-            className="w-full h-full rounded-3xl"
+            className="w-full h-full rounded"
           />
         </div>
         <div
           data-aos="fade-left"
           data-aos-duration="1200"
-          className="min-h-96 w-full lg:w-1/2 border rounded-3xl  lg:-ml-24 lg:mt-10 -mb-14 bg-white shadow-2xl"
+          className="min-h-96 w-full lg:w-1/2 border rounded  lg:-ml-24 lg:mt-10 -mb-14 bg-white shadow-2xl"
         >
           <div className="p-10  ">
-            <h4 className="text-sky-600 uppercase text-md font-bold">
+            <h4
+              style={{ color: "var(--blue)" }}
+              className=" uppercase text-md font-bold"
+            >
               About Us
             </h4>
             <h2 className="text-xl font-semibold font-mono uppercase mb-8">
               Bringing your dreams to life
             </h2>
 
-            <p className="mb-8 ">
+            <p className="mb-8 text-justify">
               PaintXpress will provide top-quality interior and exterior
               residential and commercial painting services. The principal
               officers of Barnum Painters believe that most companies in this
@@ -60,7 +69,10 @@ const AboutUs = () => {
               <h5>SATURDAY: 9 AM - 6 PM</h5>
             </div>
             <Link href="/services">
-              <button className="px-6 py-2 bg-sky-600 uppercase mt-6 text-white font-bold">
+              <button
+                style={{ backgroundColor: "var(--blue)" }}
+                className="px-6 py-2  uppercase mt-6 text-white font-bold"
+              >
                 Booking Services
               </button>
             </Link>

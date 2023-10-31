@@ -4,7 +4,7 @@ import RootLayout from "@/components/Layouts/RootLayout";
 import usePrivateRoute from "@/privateRoute/layout";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { IServices } from "@/types/global";
-import { Space, Spin, Table, message } from "antd";
+import { Breadcrumb, Space, Spin, Table, message } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
 const BookingStatusPage = () => {
@@ -63,14 +63,22 @@ const BookingStatusPage = () => {
   ];
   return (
     <div>
+      <Breadcrumb style={{}}>
+        <Breadcrumb.Item>Booking History</Breadcrumb.Item>
+        <Breadcrumb.Item>Booking Status</Breadcrumb.Item>
+      </Breadcrumb>
+      <h3
+        className="text-3xl font-bold text-center my-4"
+        style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+      >
+        Booking History
+      </h3>
+      <hr className="mb-4" />
       {services.length === 0 ? (
         <h2 className="text-red-500 text-xl">Your cart is currently empty.</h2>
       ) : (
         <>
-          <div>
-            <h3 className="text-3xl text-center mb-6">Booking History</h3>
-            <hr className="mb-4" />
-          </div>
+          <div></div>
           <Table columns={columns} dataSource={services} />
         </>
       )}

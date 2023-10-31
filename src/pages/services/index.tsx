@@ -78,10 +78,16 @@ const ServicePage = ({ categories }: IProps) => {
   return (
     <div className="mx-10 mt-10">
       <div className="mb-10 section-title">
-        <h4 className="font-bold text-md text-sky-400 uppercase ">
+        <h4
+          className="font-bold uppercase "
+          style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+        >
           Our Services
         </h4>
-        <h2 className="text-2xl font-semibold uppercase font-mono">
+        <h2
+          className="text-2xl font-semibold uppercase font-mono"
+          style={{ fontSize: "var(--titleFont)" }}
+        >
           We Provide Superior Paint Service
         </h2>
         <hr />
@@ -91,7 +97,10 @@ const ServicePage = ({ categories }: IProps) => {
         <Col sm={24} md={6} lg={6}>
           <hr />
           <div className="my-4">
-            <h1 className="text-lg uppercase font-semibold mb-4">
+            <h1
+              className="text-lg uppercase font-semibold mb-4"
+              style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+            >
               Price Range
             </h1>
             <div className="max-w-xl border p-2">
@@ -108,12 +117,18 @@ const ServicePage = ({ categories }: IProps) => {
             </div>
           </div>
           <hr />
-          <h2 className="my-4 font-semibold text-lg">Select a Category</h2>
+          <h2
+            className="my-4 font-semibold text-lg"
+            style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+          >
+            Select a Category
+          </h2>
           <button
             onClick={() => {
               setSelectCategory("");
             }}
-            className=" w-full rounded-none text-white py-2 mb-4  bg-sky-700 hover:bg-sky-950 transition duration-1000"
+            className=" w-full rounded-none text-white py-2 mb-4  transition duration-1000"
+            style={{ backgroundColor: "var(--blue)" }}
           >
             Reset category
           </button>
@@ -207,7 +222,13 @@ const ServicePage = ({ categories }: IProps) => {
                           style={{ background: "white", position: "sticky" }}
                         >
                           <Link href={`/services/${service._id}`}>
-                            <h2 className="text-xl uppercase text-sky-500">
+                            <h2
+                              className="uppercase"
+                              style={{
+                                color: "var(--blue)",
+                                fontSize: "var(--font)",
+                              }}
+                            >
                               {service.title}
                             </h2>
                           </Link>
@@ -226,7 +247,10 @@ const ServicePage = ({ categories }: IProps) => {
                           <hr />
 
                           <button
-                            className="w-full bg-sky-200 font-bold hover:bg-sky-400 transition duration-700 uppercase py-2 rounded-md"
+                            className="w-full font-bold  transition duration-700 uppercase py-2 rounded-md text-white"
+                            style={{
+                              backgroundColor: "var(--blue)",
+                            }}
                             onClick={() => handleAddToBookingList(service)}
                           >
                             book now

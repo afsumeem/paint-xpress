@@ -23,13 +23,16 @@ const HeroSection: React.FC = () => {
           }}
         />
         <div className="banner-content text-center">
-          <h5 className="text-xl md:text-2xl text-sky-100">Best in country</h5>
+          <h5 className="text-xl md:text-2xl text-white">Best in country</h5>
           <h2 className="text-2xl md:text-4xl uppercase font-bold my-8 text-white">
             Bring Your Home To Lively colors. Cost effective commercial service
           </h2>
 
           <Link href="/services">
-            <button className="px-6 py-4 bg-sky-600 uppercase mt-6 text-white font-bold">
+            <button
+              style={{ backgroundColor: "var(--blue)" }}
+              className="px-6 py-4 uppercase mt-6 text-white font-bold "
+            >
               Booking Services
             </button>
           </Link>

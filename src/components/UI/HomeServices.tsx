@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import AOS from "aos";
+import Image from "next/image";
 //
 
 interface IProps {
@@ -48,10 +49,16 @@ const HomeServices = ({ services }: IProps) => {
   return (
     <div className=" pt-20 pb-10 px-10">
       <div className="mb-10 section-title">
-        <h4 className="font-bold text-2xl text-sky-400 uppercase ">
+        <h4
+          className="font-bold uppercase "
+          style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+        >
           Our Services
         </h4>
-        <h2 className="text-4xl font-mono font-semibold uppercase">
+        <h2
+          style={{ fontSize: "var(--titleFont)" }}
+          className=" font-mono font-semibold uppercase"
+        >
           We Provide Superior Paint Service
         </h2>
       </div>
@@ -72,12 +79,12 @@ const HomeServices = ({ services }: IProps) => {
             <div className="">
               <div className="bg-black overflow-hidden">
                 <Link href={`/services/${service._id}`}>
-                  <img
+                  <Image
                     src={service?.image}
                     alt="service img"
-                    // height={500}
-                    // width={500}
-                    className="w-full md:h-52 hover:opacity-70 transition hover:scale-125 duration-1000"
+                    height={500}
+                    width={500}
+                    className="w-full md:h-56 hover:opacity-70 transition hover:scale-125 duration-1000"
                   />
                 </Link>
               </div>
@@ -87,7 +94,10 @@ const HomeServices = ({ services }: IProps) => {
                 style={{ background: "white", position: "sticky" }}
               >
                 <Link href={`/services/${service._id}`}>
-                  <h2 className="text-xl uppercase text-sky-500">
+                  <h2
+                    className=" uppercase"
+                    style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+                  >
                     {service.title}
                   </h2>
                 </Link>
@@ -107,7 +117,8 @@ const HomeServices = ({ services }: IProps) => {
                 <hr />
 
                 <button
-                  className="w-full bg-sky-200 font-bold hover:bg-sky-400 transition duration-700 uppercase py-2 rounded-md"
+                  style={{ backgroundColor: "var(--blue)" }}
+                  className="w-full font-bold text-white  transition duration-700 uppercase py-2"
                   onClick={() => handleAddToBookingList(service)}
                   // disabled={buttonClicked}
                 >
@@ -126,7 +137,10 @@ const HomeServices = ({ services }: IProps) => {
         onChange={handlePageChange}
       />
       <Link href="/services ">
-        <button className="px-6 py-2 bg-sky-600 uppercase mt-6 text-white font-bold block m-auto mb-4">
+        <button
+          style={{ backgroundColor: "var(--blue)" }}
+          className="px-6 py-2 uppercase mt-6 text-white font-bold block m-auto mb-4"
+        >
           See all services
         </button>
       </Link>

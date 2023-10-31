@@ -23,14 +23,17 @@ const Footer = () => {
   }
 
   return (
-    <div className="bg-sky-400 min-h-80 mt-20 p-10">
+    <div
+      className=" min-h-80 mt-20 px-10 pt-20"
+      style={{ backgroundColor: "var(--blue)" }}
+    >
       <Row>
         <Col md={8} sm={24}>
-          <div className="px-5 pt-4">
+          <div className="px-5 pt-4 text-white">
             <h5 className="text-uppercase mb-3 text-2xl font-bold font-mono">
               PaintXpress
             </h5>
-            <p className="text-base mb-8">
+            <p className="text-base mb-8 text-justify">
               PaintXpress will provide top-quality interior and exterior
               residential and commercial painting services. The principal
               officers of Barnum Painters believe that most companies in this
@@ -39,19 +42,19 @@ const Footer = () => {
           </div>
         </Col>
         <Col md={8} sm={24}>
-          <div className="px-5 pt-4 text-center ">
+          <div className="px-5 pt-4 text-center text-white">
             <h5 className="text-uppercase mb-3 text-2xl font-bold font-mono">
               Quick Links
             </h5>
             <Link href="/services">
-              <button className="text-black text-base underline">
+              <button className="text-white text-base underline">
                 Services
               </button>
             </Link>
             <br />
 
             <Link href="/projects">
-              <button className="text-black text-base underline">
+              <button className="text-white text-base underline">
                 Projects
               </button>
             </Link>
@@ -61,7 +64,7 @@ const Footer = () => {
 
             {session?.user && (
               <button
-                className="text-black text-base underline"
+                className="text-white text-base underline"
                 onClick={() => signout()}
               >
                 Logout
@@ -69,7 +72,7 @@ const Footer = () => {
             )}
             {user?.email && (
               <button
-                className="text-black text-base underline"
+                className="text-white text-base underline"
                 onClick={async () => {
                   const success = await signOut();
                   if (success) {
@@ -89,13 +92,13 @@ const Footer = () => {
             ) : (
               <>
                 <Link href="/login">
-                  <button className="text-black text-base underline">
+                  <button className="text-white text-base underline">
                     Login
                   </button>
                 </Link>
                 <br />
                 <Link href="/signup">
-                  <button className="text-black text-base underline">
+                  <button className="text-white text-base underline">
                     Signup
                   </button>
                 </Link>
@@ -105,7 +108,7 @@ const Footer = () => {
           </div>
         </Col>
         <Col md={8} sm={24}>
-          <div className="px-5 pt-4  ">
+          <div className="px-5 pt-4 text-white">
             <h5 className="text-uppercase mb-3 text-2xl font-bold font-mono">
               Address
             </h5>
@@ -115,37 +118,28 @@ const Footer = () => {
             </p>
 
             <h6 className="font-bold mb-2">Follow us-</h6>
-            <hr />
-            <a
-              className="text-3xl text-blue-900"
-              href="https://twitter.com/?lang=en"
-            >
-              <TwitterOutlined />
+            <hr className="mb-2" />
+            <a href="https://twitter.com/?lang=en">
+              <TwitterOutlined className="text-xl text-blue-950" />
             </a>
 
-            <a
-              className="text-3xl text-blue-950 mx-4"
-              href="https://www.facebook.com/"
-            >
-              <FacebookOutlined />
+            <a className=" mx-4" href="https://www.facebook.com/">
+              <FacebookOutlined className="text-xl text-white" />
             </a>
 
-            <a
-              className="text-3xl text-red-600"
-              href="https://www.instagram.com/"
-            >
-              <InstagramOutlined />
+            <a href="https://www.instagram.com/">
+              <InstagramOutlined className="text-xl text-red-600" />
             </a>
 
-            <a className="text-3xl mx-4" href="https://www.skype.com/en/">
-              <SkypeOutlined />
+            <a className=" mx-4" href="https://www.skype.com/en/">
+              <SkypeOutlined className="text-xl text-white" />
             </a>
           </div>
         </Col>
       </Row>
-      <hr className="" />
+      <hr />
 
-      <p className=" text-center m-4">
+      <p className="text-center mt-4 pb-4 text-white">
         Copyright &copy;2023 All Rights Reserved | This Website is made with
         &#x003C;&#10083;&#x003E; by Afsana Meem{" "}
       </p>

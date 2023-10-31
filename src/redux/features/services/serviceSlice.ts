@@ -42,6 +42,8 @@ const serviceSlice = createSlice({
       state.services = state.services.filter(
         (service) => service._id !== action.payload._id
       );
+
+      state.total -= action.payload.price;
     },
   },
 });

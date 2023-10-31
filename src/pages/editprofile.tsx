@@ -47,10 +47,16 @@ const EditProfile = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Breadcrumb style={{ margin: "16px 0" }}>
+      <Breadcrumb style={{}}>
         <Breadcrumb.Item>Edit Profile</Breadcrumb.Item>
         <Breadcrumb.Item>{user?.email}</Breadcrumb.Item>
       </Breadcrumb>
+      <h2
+        className="text-center text-3xl font-semibold my-4 upper"
+        style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+      >
+        Edit Your Profile
+      </h2>
       <hr />
       <div>
         <form
@@ -58,9 +64,6 @@ const EditProfile = () => {
           className="flex flex-col items-center justify-center"
         >
           <div className="bg-white p-10 ">
-            <h2 className="text-center text-3xl font-semibold mb-5 upper">
-              Edit Your Profile
-            </h2>
             <div className="flex w-full gap-5">
               <div className="w-full">
                 <input
@@ -104,7 +107,8 @@ const EditProfile = () => {
 
             <button
               type="submit"
-              className="px-6 py-2 block m-auto bg-sky-600 uppercase mt-6 text-white font-bold"
+              className="px-6 py-2 block m-auto first-letter:uppercase mt-6 text-white font-bold"
+              style={{ backgroundColor: "var(--blue)" }}
             >
               submit
             </button>

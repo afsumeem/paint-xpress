@@ -68,7 +68,10 @@ const SingleService = ({ service, projects }: IProps) => {
           </Col>
           <Col sm={24} md={12} lg={12}>
             <div className="">
-              <h2 className="text-3xl font-bold uppercase mb-2">
+              <h2
+                className="font-bold uppercase mb-2"
+                style={{ color: "var(--blue)", fontSize: "25px" }}
+              >
                 {service.title}
               </h2>
               <p className="text-xl mb-2">{service.category}</p>
@@ -116,7 +119,8 @@ const SingleService = ({ service, projects }: IProps) => {
               </div>
               <hr />
               <button
-                className="w-full bg-sky-200 font-bold hover:bg-sky-400 transition duration-700 uppercase py-2 rounded-md"
+                className="w-full font-bold transition duration-700 uppercase py-2 rounded-md text-white"
+                style={{ backgroundColor: "var(--blue)" }}
                 onClick={() => handleAddToBookingList(service)}
                 // disabled={buttonClicked}
               >
@@ -130,7 +134,10 @@ const SingleService = ({ service, projects }: IProps) => {
       {/*  */}
       <div className="mx-10 mt-6">
         <div className="mb-10 section-title">
-          <h4 className="font-bold text-xl text-sky-400 uppercase ">
+          <h4
+            className="font-bold text-xl uppercase"
+            style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+          >
             Relevant Projects
           </h4>
           <h2 className="text-2xl font-semibold uppercase font-mono">
@@ -152,7 +159,12 @@ const SingleService = ({ service, projects }: IProps) => {
               className="section-card mb-10  gutter-row"
             >
               <div className="shadow-lg p-6">
-                <h2 className="uppercase font-bold mb-4">{project.name}</h2>
+                <h2
+                  className="uppercase font-bold mb-4"
+                  style={{ color: "var(--blue)" }}
+                >
+                  {project.name}
+                </h2>
                 <div className="project-cover-card bg-black overflow-hidden hover:cursor-pointer">
                   <Link href="/projects ">
                     <img
@@ -162,7 +174,10 @@ const SingleService = ({ service, projects }: IProps) => {
                     />
                   </Link>
                   <div className="project-tag">
-                    <p className="bg-sky-600 p-2 m-2 font-semibold text-white uppercase ">
+                    <p
+                      className="p-2 m-2 font-semibold text-white uppercase"
+                      style={{ backgroundColor: "var(--blue)" }}
+                    >
                       {project.category}
                     </p>
                   </div>
@@ -188,7 +203,10 @@ const SingleService = ({ service, projects }: IProps) => {
           ))}
         </Row>
         <Link href="/projects ">
-          <button className="px-6 py-2 bg-sky-600 uppercase mt-6 text-white font-bold block m-auto mb-4">
+          <button
+            className="px-6 py-2 uppercase mt-6 text-white font-bold block m-auto mb-4"
+            style={{ backgroundColor: "var(--blue)" }}
+          >
             See all Projects
           </button>
         </Link>

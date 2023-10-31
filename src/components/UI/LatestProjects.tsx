@@ -31,10 +31,16 @@ const LatestProjects = ({ projects }: IProps) => {
   return (
     <div className="mx-10 mt-20">
       <div className="mb-10 section-title">
-        <h4 className="font-bold text-2xl text-sky-400 uppercase ">
+        <h4
+          style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+          className="font-bold uppercase "
+        >
           Latest Projects
         </h4>
-        <h2 className="text-4xl font-semibold uppercase font-mono">
+        <h2
+          style={{ fontSize: "var(--titleFont)" }}
+          className="font-semibold uppercase font-mono"
+        >
           Inspiration on Your Next Project
         </h2>
       </div>
@@ -62,13 +68,17 @@ const LatestProjects = ({ projects }: IProps) => {
                 {/* <div className="middle"> */}
                 <button
                   onClick={showModal}
-                  className="view-project-btn p-2 bg-sky-400 transition duration-1000"
+                  style={{ backgroundColor: "var(--blue)" }}
+                  className="view-project-btn p-2  transition duration-1000 text-white"
                 >
                   View Project
                 </button>
                 {/* </div> */}
                 <div className="project-tag">
-                  <p className="bg-sky-600 p-2 m-2 font-semibold text-white uppercase ">
+                  <p
+                    style={{ backgroundColor: "var(--blue)" }}
+                    className=" p-2 m-2 font-semibold text-white uppercase "
+                  >
                     {project.category}
                   </p>
                 </div>
@@ -116,7 +126,10 @@ const LatestProjects = ({ projects }: IProps) => {
       </Row>
 
       <Link href="/projects ">
-        <button className="px-6 py-2 bg-sky-600 uppercase mt-6 text-white font-bold block m-auto mb-4">
+        <button
+          style={{ backgroundColor: "var(--blue)" }}
+          className="px-6 py-2 uppercase mt-6 text-white font-bold block m-auto mb-4"
+        >
           See all Projects
         </button>
       </Link>

@@ -20,8 +20,8 @@ const Navbar: React.FC = () => {
   return (
     <div className="flex items-center justify-between w-full text-lg  px-10 py-2">
       <Link href="/">
-        <h2 className="text-sky-500 text-2xl ">
-          <span className="text-5xl text-sky-600 font-bold font-mono">P</span>
+        <h2 className="text-2xl" style={{ color: "var(--blue)" }}>
+          <span className="text-5xl font-bold font-mono">P</span>
           aintxpress
         </h2>
       </Link>
@@ -54,34 +54,56 @@ const Navbar: React.FC = () => {
               trigger={["click"]}
               className="cursor-pointer mx-2"
               dropdownRender={() => (
-                <div className="p-4 flex flex-col bg-sky-200 gap-2  shadow-inner">
+                <div
+                  className=" flex flex-col shadow-inner  text-center"
+                  style={{
+                    backgroundColor: "black",
+                  }}
+                >
                   {user?.email ? (
-                    <>
+                    <div style={{ borderBottom: "1px solid var(--blue2)" }}>
                       {" "}
-                      <h2 className="text-lg">{user?.email}</h2> <hr />
-                    </>
+                      <h2
+                        style={{
+                          color: "var(--blue)",
+                          fontSize: "15px",
+                        }}
+                        className="px-8 py-2"
+                      >
+                        {user?.email}
+                      </h2>{" "}
+                    </div>
                   ) : (
                     <>
                       <Link href="/login">
-                        <button className="navLink ">Login</button>
+                        <button className="dropdownNav w-full transition duration-500 px-8 py-2">
+                          Login
+                        </button>
                       </Link>
+
                       <Link href="/signup">
-                        <button className="navLink">SignUp</button>
+                        <button className="dropdownNav w-full transition duration-500 px-8 py-2">
+                          SignUp
+                        </button>
                       </Link>
                     </>
                   )}
                   {user?.email && (
                     <>
                       <Link href="/profile">
-                        <button className="navLink ">Profile</button>
+                        <button className="dropdownNav w-full transition duration-500 px-8 py-2 ">
+                          Profile
+                        </button>
                       </Link>
                       <Link href="/userprofile">
                         {" "}
-                        <button className="navLink ">Dashboard</button>
+                        <button className="dropdownNav w-full transition duration-500 px-8 py-2 ">
+                          Dashboard
+                        </button>
                       </Link>
                       <div>
                         <button
-                          className="navLink "
+                          className="dropdownNav w-full transition duration-500 px-8 py-2"
                           onClick={async () => {
                             const success = await signOut();
                             if (success) {
@@ -99,7 +121,7 @@ const Navbar: React.FC = () => {
             >
               <a onClick={(e) => e.preventDefault()} className="text-xl mt-4">
                 <Space>
-                  <UserOutlined />
+                  <UserOutlined style={{ color: "var(--blue)" }} />
                 </Space>
               </a>
             </Dropdown>
@@ -119,38 +141,37 @@ const Navbar: React.FC = () => {
           trigger={["click"]}
           className="cursor-pointer lg:invisible mx-2"
           dropdownRender={() => (
-            <div className="flex flex-col bg-white gap-2 border border-blue-900 shadow-inner">
+            <div className="flex flex-col  shadow-inner bg-black">
               {user?.email && (
                 <Link href="/profile">
-                  {" "}
-                  <button className="w-full hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base  hover:text-black py-2 ">
+                  <button className="dropdownNav w-full transition duration-500 px-20">
                     Profile
                   </button>
                 </Link>
               )}
               <Link href="/">
                 {" "}
-                <button className="w-full hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base  hover:text-black py-2 ">
+                <button className="dropdownNav w-full transition duration-500 px-20 py-2">
                   Home
                 </button>
               </Link>
 
               <Link href="/services">
                 {" "}
-                <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
+                <button className="dropdownNav w-full transition duration-500 px-20 py-2">
                   Services
                 </button>
               </Link>
 
               <Link href="/projects">
-                <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
+                <button className="dropdownNav w-full transition duration-500 px-20 py-2">
                   Projects
                 </button>
               </Link>
 
               <Link href="/team">
                 {" "}
-                <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
+                <button className="dropdownNav w-full transition duration-500 px-20 py-2">
                   Our Team
                 </button>
               </Link>
@@ -159,12 +180,12 @@ const Navbar: React.FC = () => {
                 <>
                   <Link href="/userprofile">
                     {" "}
-                    <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
+                    <button className="dropdownNav w-full transition duration-500 px-20 py-2">
                       Dashboard
                     </button>
                   </Link>
                   <button
-                    className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 "
+                    className="dropdownNav w-full transition duration-500 px-20 py-2"
                     onClick={async () => {
                       const success = await signOut();
                       if (success) {
@@ -183,13 +204,13 @@ const Navbar: React.FC = () => {
               ) : (
                 <>
                   <Link href="/login">
-                    <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
+                    <button className="dropdownNav w-full transition duration-500 px-20 py-2">
                       Login
                     </button>
                   </Link>
 
                   <Link href="/signup">
-                    <button className="hover:bg-sky-300 transition duration-500 px-20  border-b  text-sky-400 text-base w-full hover:text-black py-2 ">
+                    <button className="dropdownNav w-full transition duration-500 px-20 py-2">
                       SignUp
                     </button>
                   </Link>
@@ -200,7 +221,7 @@ const Navbar: React.FC = () => {
         >
           <a onClick={(e) => e.preventDefault()} className="text-2xl">
             <Space>
-              <BarsOutlined />
+              <BarsOutlined style={{ color: "var(--blue)" }} />
             </Space>
           </a>
         </Dropdown>

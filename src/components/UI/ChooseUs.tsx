@@ -17,23 +17,35 @@ const ChooseUs = () => {
     <div className="bg-slate-100">
       <div className="px-10 pt-10">
         <div className="mb-6">
-          <h4 className="font-bold text-2xl text-sky-400 uppercase ">
+          <h4
+            className="font-bold uppercase"
+            style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+          >
             Benefits
           </h4>
-          <h2 className="text-4xl font-mono font-semibold uppercase">
+          <h2
+            className=" font-mono font-semibold uppercase"
+            style={{ fontSize: "var(--titleFont)" }}
+          >
             Why Choose us
           </h2>
         </div>
 
         <VerticalTimeline>
           <VerticalTimelineElement
-            className="vertical-timeline-element--work mb-0"
+            className="vertical-timeline-element--work "
+            style={{ marginBottom: 0 }}
             contentStyle={{
               border: "1px dashed #F7F7F7",
               color: "#fff",
             }}
             contentArrowStyle={{ borderRight: "7px solid  gray" }}
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+            iconStyle={{
+              background: "var(--blue)",
+              height: "35px",
+              width: "35px",
+              marginLeft: "-20px",
+            }}
           >
             <div className="flex flex-col md:flex-row items-center justify-around">
               <div className="border m-4 py-4 px-8 transition duration-700  ">
@@ -77,9 +89,15 @@ const ChooseUs = () => {
             </div>
           </VerticalTimelineElement>
           <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-            icon={<BarsOutlined />}
+            style={{ marginTop: 0 }}
+            className="vertical-timeline-element--work "
+            iconStyle={{
+              background: "var(--blue)",
+              height: "35px",
+              width: "35px",
+              marginLeft: "-20px",
+            }}
+            contentArrowStyle={{ borderRight: "7px solid  gray" }}
           >
             <div className="flex flex-col md:flex-row items-center justify-around">
               <div className="border m-4 py-4 px-8 transition duration-700  ">

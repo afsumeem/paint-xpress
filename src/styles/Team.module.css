@@ -26,7 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgb(74, 100, 214);
+    border: 2px solid var(--blue);
     border-radius: 100px;
     height: 180px;
     width: 180px;
@@ -45,7 +45,7 @@
 }
 
 .teamDetails h2{
-color: #333333;
+color: var(--blue);
 font-size: 20px;
 font-weight: bold;
 
@@ -76,18 +76,18 @@ font-weight: bold;
 }
 
 .teamCard:hover{
-    border:2px solid rgba(40,155,255,1) 
+    border:2px solid var(--blue) 
 }
 .teamCard:hover .teamCover{
 background-color: white;
 }
 
 .teamCard:hover .coverBox{
-background-color:  rgb(27, 146, 236) ;
+background-color: var(--blue) ;
 
 }
 
 .teamCard:hover .boxLine{
-    background-color: blue;
+    background-color: var(--blue);
 
 }

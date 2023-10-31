@@ -35,7 +35,10 @@ const Feedback = () => {
           className="flex flex-col items-center justify-center"
         >
           <div className="bg-white p-10 mt-36">
-            <h2 className="text-center text-3xl font-semibold mb-5 upper">
+            <h2
+              className="text-center font-semibold mb-5"
+              style={{ color: "var(--blue)", fontSize: "25px" }}
+            >
               Feedback
             </h2>
             <div className="flex w-full gap-5">
@@ -96,7 +99,8 @@ const Feedback = () => {
 
             <button
               type="submit"
-              className="px-6 py-2 block m-auto bg-sky-600 uppercase mt-6 text-white font-bold"
+              className="px-6 py-2 block m-auto uppercase mt-6 text-white font-bold"
+              style={{ backgroundColor: "var(--blue)" }}
             >
               submit
             </button>
