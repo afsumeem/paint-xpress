@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { addToBookingList } from "@/redux/features/services/serviceSlice";
 import { HomeOutlined } from "@ant-design/icons";
 import { setPriceRange } from "@/redux/features/service/servicesSlice";
+import Image from "next/image";
 
 //
 
@@ -207,44 +208,53 @@ const ServicePage = ({ categories }: IProps) => {
                       <div className="mt-4">
                         <div className="bg-black overflow-hidden">
                           <Link href={`/services/${service._id}`}>
-                            <img
+                            <Image
                               src={service?.image}
                               alt="service img"
-                              // height={500}
-                              // width={500}
-                              className="w-full md:h-52 hover:opacity-70 transition hover:scale-125 duration-1000"
+                              height={500}
+                              width={500}
+                              className="w-full md:h-56 hover:opacity-70 transition hover:scale-125 duration-1000"
                             />
                           </Link>
                         </div>
 
                         <div
-                          className="mx-2 p-6 -mt-6  shadow-xl h-90"
-                          style={{ background: "white", position: "sticky" }}
+                          className="mx-2 p-6 -mt-6 shadow-xl flex flex-col justify-between"
+                          style={{
+                            background: "white",
+                            position: "sticky",
+                            minHeight: "340px",
+                          }}
                         >
-                          <Link href={`/services/${service._id}`}>
-                            <h2
-                              className="uppercase"
-                              style={{
-                                color: "var(--blue)",
-                                fontSize: "var(--font)",
-                              }}
-                            >
-                              {service.title}
-                            </h2>
-                          </Link>
-                          <hr />
-                          <p className="my-4 text-base">
-                            {service.description}
-                            <br />
+                          <div>
                             <Link href={`/services/${service._id}`}>
-                              <span className="underline">See details</span>
+                              <h2
+                                className="uppercase"
+                                style={{
+                                  color: "var(--blue)",
+                                  fontSize: "var(--font)",
+                                }}
+                              >
+                                {service.title}
+                              </h2>
                             </Link>
-                          </p>
-                          <h3 className="text-xl mb-2 font-bold">
-                            $ {service.price}
-                          </h3>
-                          <p className="mb-4 underline"> {service.category}</p>
-                          <hr />
+                            <hr />
+                            <p className="my-4 text-base">
+                              {service.description}
+                              <br />
+                              <Link href={`/services/${service._id}`}>
+                                <span className="underline">See details</span>
+                              </Link>
+                            </p>
+                            <h3 className="text-xl mb-2 font-bold">
+                              $ {service.price}
+                            </h3>
+                            <p className="mb-4 underline">
+                              {" "}
+                              {service.category}
+                            </p>
+                            <hr />
+                          </div>
 
                           <button
                             className="w-full font-bold  transition duration-700 uppercase py-2 rounded-md text-white"

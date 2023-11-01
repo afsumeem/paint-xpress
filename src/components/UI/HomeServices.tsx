@@ -90,35 +90,41 @@ const HomeServices = ({ services }: IProps) => {
               </div>
 
               <div
-                className="mx-2 p-6 -mt-6  shadow-xl h-90 "
-                style={{ background: "white", position: "sticky" }}
+                className="mx-2 p-6 -mt-6 shadow-xl flex flex-col justify-between"
+                style={{
+                  background: "white",
+                  position: "sticky",
+                  minHeight: "340px",
+                }}
               >
-                <Link href={`/services/${service._id}`}>
-                  <h2
-                    className=" uppercase"
-                    style={{ color: "var(--blue)", fontSize: "var(--font)" }}
-                  >
-                    {service.title}
-                  </h2>
-                </Link>
-                <hr />
-                <p className="my-4 text-base">
-                  {service.description.slice(0, 60)}
-                  <br />
+                <div>
                   <Link href={`/services/${service._id}`}>
-                    <span className="underline">See details</span>
+                    <h2
+                      className=" uppercase"
+                      style={{ color: "var(--blue)", fontSize: "var(--font)" }}
+                    >
+                      {service.title}
+                    </h2>
                   </Link>
-                </p>
-                <h3 className="text-xl mb-2 font-bold">$ {service.price}</h3>
-                <p className="mb-4">
-                  {" "}
-                  <PhoneOutlined /> {service.contact}
-                </p>
+                  <hr />
+                  <p className="my-4 text-base">
+                    {service.description.slice(0, 60)}
+                    <br />
+                    <Link href={`/services/${service._id}`}>
+                      <span className="underline">See details</span>
+                    </Link>
+                  </p>
+                  <h3 className="text-xl mb-2 font-bold">$ {service.price}</h3>
+                  <p className="mb-4">
+                    {" "}
+                    <PhoneOutlined /> {service.contact}
+                  </p>
+                </div>
                 <hr />
 
                 <button
                   style={{ backgroundColor: "var(--blue)" }}
-                  className="w-full font-bold text-white  transition duration-700 uppercase py-2"
+                  className="w-full font-bold text-white  transition duration-700 uppercase py-2 "
                   onClick={() => handleAddToBookingList(service)}
                   // disabled={buttonClicked}
                 >
