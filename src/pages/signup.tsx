@@ -152,7 +152,8 @@ const SignUpPage = () => {
 
             <button
               type="submit"
-              className="bg-blue-600 text-white block mx-auto p-2 rounded w-full"
+              className="text-white block mx-auto p-2 rounded w-full"
+              style={{ backgroundColor: "var(--blue)" }}
             >
               Sign Up
             </button>

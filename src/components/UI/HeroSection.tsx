@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "antd";
 import Image from "next/image";
-import img1 from "@/assests/images/hero.jpg";
+import img1 from "@/assests/images/hero2.jpg";
 import Link from "next/link";
 
 const HeroSection: React.FC = () => {
@@ -19,7 +19,7 @@ const HeroSection: React.FC = () => {
             backgroundColor: "black",
             width: "100%",
             height: "100vh",
-            opacity: "0.4",
+            opacity: "0.2",
           }}
         />
         <div className="banner-content text-center">

@@ -54,7 +54,7 @@ export default function HomePage({
       <Feedback />
       <ScrollToTop
         smooth
-        style={{ backgroundColor: "blue", padding: "5px" }}
+        style={{ backgroundColor: "var(--blue)", padding: "5px" }}
         color="white"
       />
     </>

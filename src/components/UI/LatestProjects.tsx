@@ -61,7 +61,7 @@ const LatestProjects = ({ projects }: IProps) => {
             <div className="shadow-lg p-6">
               <div className="project-cover-card bg-black overflow-hidden hover:cursor-pointer mb-4">
                 <img
-                  className="w-full h-52 opacity-70 transition project-cover-img hover:scale-125 duration-1000 project-img"
+                  className="w-full h-60 opacity-70 transition project-cover-img hover:scale-125 duration-1000 project-img"
                   src={project.image}
                   alt="latest projects image"
                 />
@@ -100,7 +100,7 @@ const LatestProjects = ({ projects }: IProps) => {
               onCancel={handleCancel}
             >
               <img
-                className="w-full h-60 transition duration-1000"
+                className="w-full h-64 transition duration-1000"
                 src={project.image}
                 alt="latest projects image"
               />

@@ -50,7 +50,7 @@ const UserProfilePage = () => {
             <>
               <button
                 className="navLink "
-                style={{ backgroundColor: "skyblue" }}
+                style={{ backgroundColor: "var(--blue)" }}
                 onClick={() => signout()}
               >
                 LogOut

@@ -76,7 +76,7 @@ const HomeServices = ({ services }: IProps) => {
             key={i}
             className="section-card mb-10 "
           >
-            <div className="">
+            <div>
               <div className="bg-black overflow-hidden">
                 <Link href={`/services/${service._id}`}>
                   <Image

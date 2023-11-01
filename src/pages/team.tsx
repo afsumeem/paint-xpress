@@ -52,7 +52,7 @@ const OurTeam = ({ teams }: IProps) => {
               <div className={styles.teamIcon}>
                 <FacebookOutlined style={{ color: "blue", fontSize: "20px" }} />
                 <TwitterOutlined
-                  style={{ color: "skyblue", fontSize: "20px" }}
+                  style={{ color: "var(--blue)", fontSize: "20px" }}
                 />
                 <InstagramOutlined style={{ color: "red", fontSize: "20px" }} />
                 {/* {team?.social_links?.facebook}
