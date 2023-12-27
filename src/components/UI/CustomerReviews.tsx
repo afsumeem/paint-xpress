@@ -34,16 +34,19 @@ const CustomerReviews = ({ reviews }: IProps) => {
           Reviews
         </h4>
         <h2
-          className="font-mono font-semibold uppercase"
-          style={{ fontSize: "var(--titleFont)" }}
+          className=" font-mono font-semibold uppercase text-xl md:text-3xl"
+          // style={{ fontSize: "var(--titleFont)" }}
         >
           What our Customer Says
         </h2>
       </div>
-      <div className="m-10 ">
-        <Slider {...settings} className="mx-20 px-6 ">
+      <div className="m-0 md:m-10">
+        <Slider {...settings} className="mx-2 md:mx-20 p-2 ">
           {reviews.map((review: ICustomerReviews, i) => (
-            <div key={i} className="border border-dashed p-10 bg-slate-50">
+            <div
+              key={i}
+              className="border border-dashed p-2 md:p-10 bg-slate-50"
+            >
               <div className="flex flex-col items-center justify-center hover:cursor-pointer">
                 <img className="item h-20 w-20" src={review?.img} alt="img" />
                 <h2

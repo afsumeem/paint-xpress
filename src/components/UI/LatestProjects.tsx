@@ -30,7 +30,7 @@ const LatestProjects = ({ projects }: IProps) => {
   }, []);
   return (
     <div className="mx-10 mt-20">
-      <div className="mb-10 section-title">
+      <div className="mb-2 md:md:10 section-title">
         <h4
           style={{ color: "var(--blue)", fontSize: "var(--font)" }}
           className="font-bold uppercase "
@@ -38,8 +38,8 @@ const LatestProjects = ({ projects }: IProps) => {
           Latest Projects
         </h4>
         <h2
-          style={{ fontSize: "var(--titleFont)" }}
-          className="font-semibold uppercase font-mono"
+          // style={{ fontSize: "var(--titleFont)" }}
+          className=" font-mono font-semibold uppercase text-xl md:text-3xl"
         >
           Inspiration on Your Next Project
         </h2>
@@ -58,7 +58,7 @@ const LatestProjects = ({ projects }: IProps) => {
             xl={8}
             className="section-card mb-10  gutter-row"
           >
-            <div className="shadow-lg p-6">
+            <div className="shadow-lg p-2 md:p-6 h-96">
               <div className="project-cover-card bg-black overflow-hidden hover:cursor-pointer mb-4">
                 <img
                   className="w-full h-60 opacity-70 transition project-cover-img hover:scale-125 duration-1000 project-img"

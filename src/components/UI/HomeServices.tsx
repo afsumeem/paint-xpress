@@ -47,7 +47,7 @@ const HomeServices = ({ services }: IProps) => {
   }, []);
 
   return (
-    <div className=" pt-20 pb-10 px-10">
+    <div className=" pt-10 md:pt-20 pb-10 px-10">
       <div className="mb-10 section-title">
         <h4
           className="font-bold uppercase "
@@ -56,8 +56,8 @@ const HomeServices = ({ services }: IProps) => {
           Our Services
         </h4>
         <h2
-          style={{ fontSize: "var(--titleFont)" }}
-          className=" font-mono font-semibold uppercase"
+          // style={{ fontSize: "var(--titleFont)" }}
+          className=" font-mono font-semibold uppercase text-xl md:text-3xl"
         >
           We Provide Superior Paint Service
         </h2>

@@ -55,10 +55,10 @@ const PaintCategories = ({ categories }: IProps) => {
   };
 
   return (
-    <div className=" m-10 ">
-      <Slider {...settings} className="mx-20 px-6 ">
+    <div>
+      <Slider {...settings} className="mx-10 md:mx-20 px-2 ">
         {categories.map((category: ICategory, i) => (
-          <div key={i} className="border border-dashed p-10 ">
+          <div key={i} className="border border-dashed p-2 ">
             <div className="flex flex-col items-center justify-center hover:cursor-pointer">
               <img className="item h-32 w-32" src={category?.image} alt="img" />
               <h2 className="text-xl uppercase mt-4 text-red-500 font-bold">

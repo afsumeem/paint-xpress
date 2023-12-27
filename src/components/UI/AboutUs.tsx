@@ -19,8 +19,8 @@ const AboutUs = () => {
           Who we are
         </h4>
         <h2
-          style={{ fontSize: "var(--titleFont)" }}
-          className="font-mono font-semibold uppercase"
+          // style={{ fontSize: "var(--titleFont)" }}
+          className=" font-mono font-semibold uppercase text-xl md:text-4xl"
         >
           Leading Painting Service Agency
         </h2>
@@ -43,14 +43,14 @@ const AboutUs = () => {
           data-aos-duration="1200"
           className="min-h-96 w-full lg:w-1/2 border rounded  lg:-ml-24 lg:mt-10 -mb-14 bg-white shadow-2xl"
         >
-          <div className="p-10  ">
+          <div className="p-5 md:p-10  ">
             <h4
               style={{ color: "var(--blue)" }}
               className=" uppercase text-md font-bold"
             >
               About Us
             </h4>
-            <h2 className="text-xl font-semibold font-mono uppercase mb-8">
+            <h2 className="text-xl md:text-3xl font-semibold font-mono uppercase mb-8">
               Bringing your dreams to life
             </h2>
 

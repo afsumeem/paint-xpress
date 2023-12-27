@@ -24,8 +24,8 @@ const ChooseUs = () => {
             Benefits
           </h4>
           <h2
-            className=" font-mono font-semibold uppercase"
-            style={{ fontSize: "var(--titleFont)" }}
+            className=" font-mono font-semibold uppercase text-xl md:text-3xl"
+            // style={{ fontSize: "var(--titleFont)" }}
           >
             Why Choose us
           </h2>
