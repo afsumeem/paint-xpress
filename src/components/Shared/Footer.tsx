@@ -24,7 +24,7 @@ const Footer = () => {
 
   return (
     <div
-      className=" min-h-80 mt-20 px-10 pt-20"
+      className="min-h-80 mt-4 md:mt-20 px-2 md:px-10 pt-5 md:pt-10"
       style={{ backgroundColor: "var(--blue)" }}
     >
       <Row>
@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
         </Col>
         <Col md={8} sm={24}>
-          <div className="px-5 pt-4 text-center text-white">
+          <div className="px-5 pt-4 text-start md:text-center text-white">
             <h5 className="text-uppercase mb-3 text-2xl font-bold font-mono">
               Quick Links
             </h5>
@@ -108,7 +108,7 @@ const Footer = () => {
           </div>
         </Col>
         <Col md={8} sm={24}>
-          <div className="px-5 pt-4 text-white">
+          <div className="px-5 py-4 text-white">
             <h5 className="text-uppercase mb-3 text-2xl font-bold font-mono">
               Address
             </h5>
