@@ -119,6 +119,12 @@
   color: white;
 }
 
+/* projectCard */
+
+.projectCard {
+  height: 400px;
+}
+
 @-webkit-keyframes zoom {
   from {
     -webkit-transform: scale(1, 1);

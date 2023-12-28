@@ -147,9 +147,9 @@ const Projects = ({ categories }: IProps) => {
                       md={12}
                       lg={12}
                       xl={8}
-                      className="section-card mb-10  gutter-row"
+                      className="section-card mb-10 gutter-row"
                     >
-                      <div className="shadow-lg p-6 mx-2 ">
+                      <div className="shadow-lg p-6 mx-2 projectCard">
                         <h2 className="uppercase font-bold mb-4">
                           {project.name}
                         </h2>
