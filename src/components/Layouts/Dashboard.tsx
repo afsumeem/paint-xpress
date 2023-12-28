@@ -35,11 +35,11 @@ const items: MenuItem[] = [
     "2",
     <HistoryOutlined />
   ),
-  getItem(
-    <Link href="/bookingstatus">Booking Status</Link>,
-    "5",
-    <BookOutlined />
-  ),
+  // getItem(
+  //   <Link href="/bookingstatus">Booking Status</Link>,
+  //   "5",
+  //   <BookOutlined />
+  // ),
   getItem("Quick Actions", "7", <InteractionOutlined />, [
     getItem(<Link href="/#feedback">Feedback us</Link>, "9"),
     getItem(<Link href="/services">Service</Link>, "10"),

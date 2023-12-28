@@ -26,8 +26,8 @@ const OurTeam = ({ teams }: IProps) => {
           Expert Team
         </h4>
         <h2
-          className="font-semibold uppercase font-mono mb-6"
-          style={{ fontSize: "var(--titleFont)" }}
+          className=" font-mono font-semibold uppercase text-xl md:text-3xl"
+          // style={{ fontSize: "var(--titleFont)" }}
         >
           Trained PaintXpress Team
         </h2>
@@ -35,7 +35,7 @@ const OurTeam = ({ teams }: IProps) => {
       </div>
       <Row gutter={20}>
         {teams.map((team, i) => (
-          <Col key={i} sm={24} md={12} lg={8}>
+          <Col key={i} xs={24} sm={24} md={12} lg={8}>
             <div className={styles.teamCard}>
               <div className={styles.coverBox}>
                 <div className={styles.teamCover}>

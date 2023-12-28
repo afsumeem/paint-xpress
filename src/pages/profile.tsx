@@ -134,9 +134,15 @@ const Profile = () => {
                     </button>
                   </>
                 )}
+                {/* {
+                  user?.role==="admin" && (
+                    <> */}
                 <button className="navLink">
                   <Link href="/admin/usermanagement">Admin Dashboard </Link>
                 </button>
+                {/* </>
+                  )
+                } */}
               </div>
             </div>
           </Col>
