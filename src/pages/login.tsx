@@ -6,6 +6,10 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Spin } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useState } from "react";
+import Icon, { CopyOutlined } from "@ant-design/icons";
+
 //
 
 interface IFormInput {
@@ -14,6 +18,40 @@ interface IFormInput {
 }
 
 const LoginPage = () => {
+  // user
+  const [userId, setUserId] = useState("user@paintxpress.com");
+  const [password, setPassword] = useState("abcd1234");
+  const [userIdCopied, setUserIdCopied] = useState(false);
+  const [passwordCopied, setPasswordCopied] = useState(false);
+
+  // admin
+  const [adminId, setAdminId] = useState("admin@paintxpress.com");
+  const [adminPassword, setAdminPassword] = useState("abcd1234");
+  const [adminIdCopied, setAdminIdCopied] = useState(false);
+  const [adminPasswordCopied, setAdminPasswordCopied] = useState(false);
+
+  // user
+  const handleCopyUserId = () => {
+    setUserIdCopied(true);
+    setTimeout(() => setUserIdCopied(false), 1000);
+  };
+
+  const handleCopyPassword = () => {
+    setPasswordCopied(true);
+    setTimeout(() => setPasswordCopied(false), 1000);
+  };
+
+  // admin
+  const handleCopyAdminId = () => {
+    setAdminIdCopied(true);
+    setTimeout(() => setAdminIdCopied(false), 1000);
+  };
+
+  const handleCopyAdminPassword = () => {
+    setAdminPasswordCopied(true);
+    setTimeout(() => setAdminPasswordCopied(false), 1000);
+  };
+
   //
   const router = useRouter();
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -61,13 +99,15 @@ const LoginPage = () => {
           background:
             "linear-gradient(90deg, rgba(40,155,255,1) 0%, rgba(29,79,144,1) 63%, rgba(0,109,193,1) 99%)",
           padding: "40px",
-          height: "100vh",
+          // height: "100vh",
         }}
       >
         <div className={styles.form}>
-          <h3 className="text-center font-bold my-4 text-2xl">
-            LOGIN TO CONTINUE
-          </h3>
+          <div className="block m-auto">
+            <h3 className="text-center font-bold my-4 text-2xl">
+              LOGIN TO CONTINUE
+            </h3>
+          </div>
 
           <hr />
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -110,13 +150,74 @@ const LoginPage = () => {
             </h4>
           </Link>
 
-          <h4 className="text-center  ">
+          <h4 className="text-center mb-2 ">
             Back to{" "}
             <Link href="/">
               <span className="underline text-blue-800">home</span>
             </Link>
           </h4>
+          <div className={styles.userCredential}>
+            <h3 className=" font-semibold my-1 text-center text-md">
+              User Credential
+            </h3>
+            <hr />
+            <div className="flex justify-around py-1">
+              <p>
+                <span className="mr-5">{userId}</span>
+                <CopyToClipboard text={userId} onCopy={handleCopyUserId}>
+                  <CopyOutlined />
+                </CopyToClipboard>
+                {userIdCopied ? (
+                  <span style={{ color: "red", marginLeft: "5px" }}>
+                    Copied
+                  </span>
+                ) : null}
+              </p>
+              <p>
+                <span className="mr-5">{password}</span>
+                <CopyToClipboard text={password} onCopy={handleCopyPassword}>
+                  <CopyOutlined />
+                </CopyToClipboard>
+                {passwordCopied ? (
+                  <span style={{ color: "red", marginLeft: "5px" }}>
+                    Copied
+                  </span>
+                ) : null}
+              </p>
+            </div>
+            <hr />
+            {/* admin credential */}
+            <div className="flex justify-around pt-1">
+              <p>
+                <span className="mr-5">{adminId}</span>
+                <CopyToClipboard text={adminId} onCopy={handleCopyAdminId}>
+                  <CopyOutlined />
+                </CopyToClipboard>
+                {adminIdCopied ? (
+                  <span style={{ color: "red", marginLeft: "5px" }}>
+                    Copied
+                  </span>
+                ) : null}
+              </p>
+              <p>
+                <span className="mr-5">{adminPassword}</span>
+                <CopyToClipboard
+                  text={adminPassword}
+                  onCopy={handleCopyAdminPassword}
+                >
+                  <CopyOutlined />
+                </CopyToClipboard>
+                {adminPasswordCopied ? (
+                  <span style={{ color: "red", marginLeft: "5px" }}>
+                    Copied
+                  </span>
+                ) : null}
+              </p>
+            </div>
+          </div>
         </div>
+
+        {/*  */}
         {error && (
           <div>
             <p>Error: {error?.message}</p>

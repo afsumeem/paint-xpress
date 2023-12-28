@@ -213,17 +213,17 @@ const ServicePage = ({ categories }: IProps) => {
                               alt="service img"
                               height={500}
                               width={500}
-                              className="w-full md:h-56 hover:opacity-70 transition hover:scale-125 duration-1000"
+                              className="w-full md:h-56 2xl:h-96 hover:opacity-70 transition hover:scale-125 duration-1000"
                             />
                           </Link>
                         </div>
 
                         <div
-                          className="mx-2 p-6 -mt-6 shadow-xl flex flex-col justify-between"
+                          className="mx-2 p-6 -mt-6 h-96 shadow-xl flex flex-col justify-between"
                           style={{
                             background: "white",
                             position: "sticky",
-                            minHeight: "340px",
+                            // minHeight: "340px",
                           }}
                         >
                           <div>

@@ -1,57 +1,69 @@
 @media only screen and (max-width: 600px) {
-    .form{
-        width: 90%;
-    }
+  .form {
+    width: 90%;
+  }
 }
 @media only screen and (min-width: 601px) {
-    .form{
-        width: 70%;
-    }
+  .form {
+    width: 70%;
+  }
 }
 
-
 @media only screen and (min-width: 992px) {
-    .form{
-        width: 60%;
-    }
+  .form {
+    width: 60%;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
-    .form{
-        width: 40%;
-    }
+  .form {
+    width: 40%;
+  }
 }
 
-.form{
-    /* height: 600px; */
-    border-radius: 10px;
-    background: rgb(231, 231, 252);
-    margin:  auto;
-    padding: 40px;
-    margin-bottom: 40px;
-    color: rgb(0, 0, 0)
+.form {
+  /* height: 600px; */
+  border-radius: 10px;
+  background: rgb(231, 231, 252);
+  margin: auto;
+  padding: 40px;
+  margin-bottom: 40px;
+  color: rgb(0, 0, 0);
 }
 
-.form form{
-    margin-top: 20px;
+.form form {
+  margin-top: 20px;
 }
 
-.form input{
-    /* width: 100%; */
-    padding: 14px;
-    border-radius: 5px;
-    outline: none;
+.form input {
+  /* width: 100%; */
+  padding: 14px;
+  border-radius: 5px;
+  outline: none;
 }
 
-.form button{
-    width: 100%;
-    margin-top: 20px;
+.form button {
+  width: 100%;
+  margin-top: 20px;
 }
 
-.icons{
-    width: 30%;
-    font-size: 40px;
-    margin: 20px auto;
-    display: flex;
-    justify-content: space-between;
+.icons {
+  width: 30%;
+  font-size: 40px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* userCredential */
+
+.userCredential {
+  border-radius: 10px;
+  width: 80%;
+  /* margin-top: 10px; */
+  background: rgb(178, 169, 255);
+  padding: 12px;
+  color: rgb(0, 0, 0);
+  display: block;
+  margin: auto;
 }

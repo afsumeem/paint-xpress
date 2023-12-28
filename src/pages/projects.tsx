@@ -149,14 +149,14 @@ const Projects = ({ categories }: IProps) => {
                       xl={8}
                       className="section-card mb-10  gutter-row"
                     >
-                      <div className="shadow-lg p-6">
+                      <div className="shadow-lg p-6 mx-2 ">
                         <h2 className="uppercase font-bold mb-4">
                           {project.name}
                         </h2>
                         <div className="project-cover-card bg-black overflow-hidden hover:cursor-pointer">
                           <Link href="/projects ">
                             <img
-                              className="w-full  hover:opacity-50  opacity-70 transition hover:scale-125 duration-1000"
+                              className="w-full h-60 2xl:h-96  hover:opacity-50  opacity-70 transition hover:scale-125 duration-1000"
                               src={project.image}
                               alt="latest projects image"
                             />
