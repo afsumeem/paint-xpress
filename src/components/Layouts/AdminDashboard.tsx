@@ -39,11 +39,11 @@ const items: MenuItem[] = [
     "5",
     <BookOutlined />
   ),
-  getItem(
-    <Link href="/admin/usersprofile">Users Profile</Link>,
-    "",
-    <UserOutlined />
-  ),
+  // getItem(
+  //   <Link href="/admin/usersprofile">Users Profile</Link>,
+  //   "",
+  //   <UserOutlined />
+  // ),
   getItem("Quick Actions", "7", <InteractionOutlined />, [
     getItem(<Link href="/projects">Projects</Link>, "9"),
     getItem(<Link href="/services">Service</Link>, "10"),

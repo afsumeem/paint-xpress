@@ -63,4 +63,5 @@ export interface ITeams {
 
 export interface IUsers {
   email: string;
+  role?: string;
 }

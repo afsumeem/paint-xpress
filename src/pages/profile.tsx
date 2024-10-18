@@ -135,7 +135,7 @@ const Profile = () => {
                   </>
                 )}
                 {/* {
-                  user?.role==="admin" && (
+                  user?.email==="admin" && (
                     <> */}
                 <button className="navLink">
                   <Link href="/admin/usermanagement">Admin Dashboard </Link>
